@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b81de0497758f408919b3ef798e8d9, type: 3}
+  m_Name: Cave4
+  m_EditorClassIdentifier: 
+  Darkest: {r: 0.17254902, g: 0, b: 0.08627451, a: 0}
+  Dark: {r: 0.30980393, g: 0.30588236, b: 0.5019608, a: 0}
+  Light: {r: 0.5764706, g: 0.50980395, b: 0.50980395, a: 0}
+  Lightest: {r: 0.8941177, g: 0.7960785, b: 0.7490196, a: 0}
