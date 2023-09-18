@@ -37,4 +37,10 @@ public class PlayerMovement : MonoBehaviour
 			transform.position += new Vector3(1f, 0f) * speed * Time.deltaTime;
 		}
 	}
+	
+	void OnCollisionEnter2D(Collision2D other)
+	{
+		Debug.Log(other.gameObject);
+	}
+
 }
