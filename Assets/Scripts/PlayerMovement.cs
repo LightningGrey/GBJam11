@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		Debug.Log(cam.WorldToScreenPoint(transform.position));
+		//Debug.Log(cam.WorldToScreenPoint(transform.position));
 		if (gb.Input.Up)
 		{
 			transform.position += new Vector3(0f, 1f) * speed * Time.deltaTime;
