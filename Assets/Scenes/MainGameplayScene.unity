@@ -1216,8 +1216,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e974f0c249dfbd4aad0e867c4c4ab36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
   spriteHandler: {fileID: 1609827915}
+  rb: {fileID: 1897937037}
+  speed: 18
+  direction: {x: 0, y: 0}
 --- !u!61 &1897937036
 BoxCollider2D:
   m_ObjectHideFlags: 0

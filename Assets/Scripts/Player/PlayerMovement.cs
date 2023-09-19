@@ -6,9 +6,19 @@ using GBTemplate;
 public class PlayerMovement : MonoBehaviour
 {
 	private GBConsoleController gb;
+	
+	
+	[Header("References")]
 	private Camera cam;
-	public float speed = 0.5f;
 	public PlayerSprite spriteHandler;
+	public Rigidbody2D rb;
+	
+	
+	[Header("Variables")]
+	public float speed = 0.5f;
+	public Vector2 direction = Vector2.zero;
+	
+
 	
 	
 	// Start is called before the first frame update
@@ -24,26 +34,32 @@ public class PlayerMovement : MonoBehaviour
 		//Debug.Log(cam.WorldToScreenPoint(transform.position));
 		if (gb.Input.Up)
 		{
-			transform.position += new Vector3(0f, 1f) * speed * Time.deltaTime;
+			direction.y += 1f;
 		}
 		if (gb.Input.Down)
 		{
-			transform.position -= new Vector3(0f, 1f) * speed * Time.deltaTime;
+			direction.y -= 1f;
 		}
 		if (gb.Input.Left)
 		{
-			transform.position -= new Vector3(1f, 0f) * speed * Time.deltaTime;			
+			direction.x -= 1f;
 		}
 		if (gb.Input.Right)
 		{
-			transform.position += new Vector3(1f, 0f) * speed * Time.deltaTime;
+			direction.x += 1f;
 		}
-		
-		
+		direction = direction.normalized;
 		
 		spriteHandler.UpdateGameplaySprite(gb.Input.Up, gb.Input.Down, 
 			gb.Input.Left, gb.Input.Right);
-		
+			
+	}
+	
+	void FixedUpdate() 
+	{
+		rb.velocity = new Vector2(direction.x * speed * Time.fixedDeltaTime, direction.y * speed * Time.fixedDeltaTime);
+
+		direction = Vector2.zero;
 	}
 	
 	
