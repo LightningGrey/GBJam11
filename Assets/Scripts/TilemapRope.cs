@@ -68,9 +68,9 @@ public class TilemapRope : MonoBehaviour
 		Debug.Log(lastTile);
 		
 		
-		if (!tilemap.HasTile(currentTile))
+		if (!tilemap.HasTile(lastTile))
 		{
-			tilemap.SetTile(currentTile, ropeTiles[tileIndex]);
+			tilemap.SetTile(lastTile, ropeTiles[tileIndex]);
 		}
 		
 		if (tilemap.HasTile(currentTile))

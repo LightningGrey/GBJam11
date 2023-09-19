@@ -1045,7 +1045,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7645b87a35b43a04a9605494dbff0057, type: 2}
   - {fileID: 11400000, guid: a7474ca04dcb37341bca9492452af1f7, type: 2}
   tileIndex: 1
+  lastDirection: 1
+  currentDirection: 1
   lastTile: {x: 0, y: 0, z: 0}
+  currentTile: {x: 0, y: 0, z: 0}
 --- !u!1 &1609827912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1313,6 +1316,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
+  direction: {x: 0, y: 0, z: 0}
+  tilemap: {fileID: 1142123202}
 --- !u!61 &1897937036
 BoxCollider2D:
   m_ObjectHideFlags: 0

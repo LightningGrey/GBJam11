@@ -2,12 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GBTemplate;
+using UnityEngine.Tilemaps;
 
 public class PlayerMovement : MonoBehaviour
 {
 	private GBConsoleController gb;
 	private Camera cam;
 	public float speed = 0.5f;
+	public Vector3 direction = Vector3.zero;
+	public Tilemap tilemap;
+	
+	public bool timeBuffer = false;
+	public float timer = 0.3f;
+	
 	
 	// Start is called before the first frame update
 	void Start()
@@ -19,23 +26,47 @@ public class PlayerMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		//Debug.Log(cam.WorldToScreenPoint(transform.position));
-		if (gb.Input.Up)
+		if (!timeBuffer)
 		{
-			transform.position += new Vector3(0f, 1f) * speed * Time.deltaTime;
+			if (gb.Input.Up)
+			{
+				direction = new Vector3(0f, 1f);
+			}
+			if (gb.Input.Down)
+			{
+				direction = new Vector3(0f, -1f);
+			}
+			if (gb.Input.Left)
+			{
+				direction = new Vector3(-1f, 0f);
+			}
+			if (gb.Input.Right)
+			{
+				direction = new Vector3(1f, 0f);
+			}
+
+			if (direction != Vector3.zero)
+			{
+				Movement();	
+			}
 		}
-		if (gb.Input.Down)
+		else
 		{
-			transform.position -= new Vector3(0f, 1f) * speed * Time.deltaTime;
+			timer -= Time.deltaTime;
+			if (timer <= 0f)
+			{
+				timer = 0.3f;
+				timeBuffer = false;
+			}
 		}
-		if (gb.Input.Left)
-		{
-			transform.position -= new Vector3(1f, 0f) * speed * Time.deltaTime;
-		}
-		if (gb.Input.Right)
-		{
-			transform.position += new Vector3(1f, 0f) * speed * Time.deltaTime;
-		}
+		
+	}
+	
+	void Movement()
+	{
+		transform.position += direction * 0.16f;
+		direction = Vector3.zero;
+		timeBuffer = true;
 	}
 	
 	void OnCollisionEnter2D(Collision2D other)
