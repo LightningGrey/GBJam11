@@ -1006,7 +1006,7 @@ Grid:
   m_CellSize: {x: 0.16, y: 0.16, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
-  m_CellSwizzle: 0
+  m_CellSwizzle: 2
 --- !u!4 &1544699868
 Transform:
   m_ObjectHideFlags: 0
@@ -1044,6 +1044,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4df7dacd769141a4186f7fb5f1d95080, type: 2}
   - {fileID: 11400000, guid: 7645b87a35b43a04a9605494dbff0057, type: 2}
   - {fileID: 11400000, guid: a7474ca04dcb37341bca9492452af1f7, type: 2}
+  tileIndex: 1
   lastTile: {x: 0, y: 0, z: 0}
 --- !u!1 &1609827912
 GameObject:
