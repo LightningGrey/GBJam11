@@ -65,7 +65,7 @@ public class TilemapRope : MonoBehaviour
 			currentDirection = Direction.RIGHT;
 		}
 		
-		Debug.Log(lastTile);
+		//Debug.Log(lastTile);
 		
 		
 		if (!tilemap.HasTile(lastTile))

@@ -619,16 +619,16 @@ Tilemap:
       e12: 8.45e-43
       e13: 8.45e-43
       e20: 2.9269753e-17
-      e21: -89180160
-      e22: -4.864488e-19
-      e23: 2.064827
+      e21: -6.7382555e-15
+      e22: -3.9667632e-19
+      e23: 2.0066986
       e30: 4.5905e-41
       e31: 8.48e-43
       e32: 8.45e-43
       e33: 8.48e-43
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: 4.122e-41, g: 4.122e-41, b: 4.122e-41, a: 4.122e-41}
+    m_Data: {r: 4.1195e-41, g: 4.1195e-41, b: 4.1195e-41, a: 4.1195e-41}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1318,6 +1318,8 @@ MonoBehaviour:
   speed: 0.5
   direction: {x: 0, y: 0, z: 0}
   tilemap: {fileID: 1142123202}
+  timeBuffer: 0
+  timer: 0.3
 --- !u!61 &1897937036
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 	public Tilemap tilemap;
 	
 	public bool timeBuffer = false;
-	public float timer = 0.3f;
+	public float timer = 1f;
 	
 	
 	// Start is called before the first frame update
@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		Debug.Log(timeBuffer);
 		if (!timeBuffer)
 		{
 			if (gb.Input.Up)
