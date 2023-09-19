@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
 	private GBConsoleController gb;
 	private Camera cam;
 	public float speed = 0.5f;
+	public PlayerSprite spriteHandler;
+	
 	
 	// Start is called before the first frame update
 	void Start()
@@ -30,13 +32,20 @@ public class PlayerMovement : MonoBehaviour
 		}
 		if (gb.Input.Left)
 		{
-			transform.position -= new Vector3(1f, 0f) * speed * Time.deltaTime;
+			transform.position -= new Vector3(1f, 0f) * speed * Time.deltaTime;			
 		}
 		if (gb.Input.Right)
 		{
 			transform.position += new Vector3(1f, 0f) * speed * Time.deltaTime;
 		}
+		
+		
+		
+		spriteHandler.UpdateGameplaySprite(gb.Input.Up, gb.Input.Down, 
+			gb.Input.Left, gb.Input.Right);
+		
 	}
+	
 	
 	void OnCollisionEnter2D(Collision2D other)
 	{
