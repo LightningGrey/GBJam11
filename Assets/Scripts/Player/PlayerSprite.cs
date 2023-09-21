@@ -30,7 +30,7 @@ public class PlayerSprite : MonoBehaviour
 		{
 			activeSprite.flipX = true;
 		}
-		else
+		else if (right)
 		{
 			activeSprite.flipX = false;
 		}
