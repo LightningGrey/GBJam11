@@ -309,7 +309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 64}
+  m_AnchoredPosition: {x: 0, y: 56}
   m_SizeDelta: {x: 160, y: 144}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1016190108
@@ -421,7 +421,7 @@ Transform:
   m_GameObject: {fileID: 1056881587}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1067,7 +1067,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.8, y: -162}
+  m_AnchoredPosition: {x: -25.5, y: -153}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1610157333
@@ -1235,7 +1235,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.74, y: -162}
+  m_AnchoredPosition: {x: 0.74, y: -154}
   m_SizeDelta: {x: 193.73, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1720579839
@@ -1258,7 +1258,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 200
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 66d09c0ac789a804d8de417a7158a9e1, type: 2}
   m_sharedMaterial: {fileID: -2881342553489896713, guid: 66d09c0ac789a804d8de417a7158a9e1, type: 2}
@@ -1477,7 +1477,7 @@ Transform:
   m_GameObject: {fileID: 1897937032}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.081, y: 0.748, z: 0}
+  m_LocalPosition: {x: 0.081, y: 0.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1499,7 +1499,9 @@ MonoBehaviour:
   spriteHandler: {fileID: 1609827915}
   rb: {fileID: 1897937037}
   speed: 18
+  speedScale: 1
   direction: {x: 0, y: 0}
+  dead: 0
 --- !u!61 &1897937036
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1597,7 +1599,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984161338}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
@@ -1671,7 +1673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelMusic:
   - {fileID: 8300000, guid: a5abe1db1f17ae84daed694eeed2b6f9, type: 3}
-  energyMeter: 200
+  energyMeter: 5
   timer: 1
   energyMeterText: {fileID: 1720579839}
 --- !u!4 &2018996007

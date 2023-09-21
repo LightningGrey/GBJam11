@@ -71,8 +71,17 @@ public class PlayerSprite : MonoBehaviour
 		// 	activeSprite.flipX = false;
 		// }
 		
-		
-		
+	}
+	
+	public void UpdateDeathSprite()
+	{
+		animationController.updateMode = AnimatorUpdateMode.UnscaledTime;
+		animationController.Play("Death");
+	}
+	public void DeathAnimationFinish()
+	{
+		animationController.updateMode = AnimatorUpdateMode.Normal;
+		StartCoroutine(GameplayManager.Instance.ReloadScene());
 	}
 	
 }
