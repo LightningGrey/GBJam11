@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GBTemplate;
+using DG.Tweening;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -57,7 +58,14 @@ public class PlayerMovement : MonoBehaviour
 	
 	void FixedUpdate() 
 	{
-		rb.velocity = new Vector2(direction.x * speed * Time.fixedDeltaTime, direction.y * speed * Time.fixedDeltaTime);
+		rb.velocity = new Vector2(direction.x, direction.y) * speed * Time.fixedDeltaTime;
+		
+		// var velocity = rb.velocity;
+		// 
+		// rb.MovePosition(Vector2.SmoothDamp(transform.position, new Vector2(rb.transform.position.x, rb.transform.position.y),
+		// ref velocity, 1f));
+		
+		//rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVel, ref refVel, smoothVal);
 
 		direction = Vector2.zero;
 	}
@@ -65,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
 	
 	void OnCollisionEnter2D(Collision2D other)
 	{
-		Debug.Log(other.gameObject);
+		//Debug.Log(other.gameObject);
 	}
 
 }

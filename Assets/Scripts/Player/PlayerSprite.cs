@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerSprite : MonoBehaviour
@@ -7,6 +8,7 @@ public class PlayerSprite : MonoBehaviour
 	
 	public SpriteRenderer activeSprite;
 	public List<Sprite> gameplaySprites = new List<Sprite>();
+	public Animator animationController;
 	
 	
 	// Start is called before the first frame update
@@ -21,32 +23,54 @@ public class PlayerSprite : MonoBehaviour
 		
 	}
 	
+	//TODO: UPDATE SPRITE
 	public void UpdateGameplaySprite(bool up, bool down, bool left, bool right)
 	{
 		if (left)
 		{
-			activeSprite.sprite = gameplaySprites[1];
 			activeSprite.flipX = true;
 		}
 		else
 		{
-			if (up)
+			activeSprite.flipX = false;
+		}
+		
+		
+		if (up)
+		{
+			animationController.Play("Up");
+		}
+		else if (down)
+		{
+			if (left || right)
 			{
-				activeSprite.sprite = gameplaySprites[2];
-				activeSprite.flipX = false;
+				//activeSprite.sprite = gameplaySprites[1];	
+				animationController.Play("DownRight");
 			}
-			else if (down)
+			else
 			{
-				activeSprite.sprite = gameplaySprites[0];
-				activeSprite.flipX = false;
-			}
-			else if (right)
-			{
-				activeSprite.sprite = gameplaySprites[1];
-				activeSprite.flipX = false;
+				animationController.Play("Down");
 			}
 		}
+		else if (right)
+		{
+			animationController.Play("Right");
+		}
+		else if (left)
+		{
+			animationController.Play("Left");
+		}	
 
+
+		// if (left)
+		// {
+		// 	activeSprite.flipX = true;
+		// }
+		// else if (right)
+		// {
+		// 	activeSprite.flipX = false;
+		// }
+		
 		
 		
 	}
