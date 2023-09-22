@@ -36,7 +36,14 @@ public class PlayerSprite : MonoBehaviour
 		
 		if (up)
 		{
-			animationController.Play("Up");
+			if (left || right)
+			{	
+				animationController.Play("UpRight");
+			}
+			else
+			{
+				animationController.Play("Up");
+			}
 		}
 		else if (down)
 		{

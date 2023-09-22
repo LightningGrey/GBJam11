@@ -45,6 +45,11 @@ public class GBManager : MonoBehaviour
 		SceneManager.LoadScene(loadScene);
 		
 	}
+	
+	// public void SetActiveControl(bool setter = true)
+	// {
+	// 	activeControl = setter;
+	// }
 
 
 	public void LoadNewScene(Scene currentScene, string nextScene)

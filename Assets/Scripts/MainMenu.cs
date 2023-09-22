@@ -26,9 +26,8 @@ public class MainMenu : MonoBehaviour
 
 		mainMenu.transform.DOLocalMoveY(-36f, 1f, true).SetEase(Ease.Linear).OnComplete(
 			() => arrow.SetActive(true)).OnComplete(
-				() => currentCoroutine = StartCoroutine(UIFlash()));
-				
-		GBManager.Instance.activeControl = true;
+				//() => GBManager.Instance.activeControl = true).OnComplete(
+					() => currentCoroutine = StartCoroutine(UIFlash()));
 
 	}
 
@@ -65,6 +64,7 @@ public class MainMenu : MonoBehaviour
 	
 	public IEnumerator UIFlash()
 	{
+		GBManager.Instance.activeControl = true;
 
 		do
 		{
@@ -82,6 +82,8 @@ public class MainMenu : MonoBehaviour
 	
 	void StartGame()
 	{
+		DG.Tweening.DOTween.KillAll();
+		
 		GBManager.Instance.activeControl = false;
 		GBManager.Instance.LoadNewScene(SceneManager.GetActiveScene(), "MainGameplayScene");
 	}
