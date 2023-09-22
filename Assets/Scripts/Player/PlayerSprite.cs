@@ -79,7 +79,7 @@ public class PlayerSprite : MonoBehaviour
 	public void DeathAnimationFinish()
 	{
 		animationController.updateMode = AnimatorUpdateMode.Normal;
-	 	GameplaySceneManager.Instance.ReloadScene();
+	 	GBManager.Instance.ReloadScene();
 	}
 	
 }

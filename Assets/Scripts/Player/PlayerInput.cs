@@ -38,7 +38,7 @@ public class PlayerInput : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (GameplaySceneManager.Instance.activeControl)
+		if (GBManager.Instance.activeControl)
 		{
 
 			//movement code

@@ -49,8 +49,6 @@ public class GameplayManager : MonoBehaviour
 		 //Getting the instance of the console controller, so we can access its functions
 		gb = GBConsoleController.GetInstance();
 		gb.Sound.PlayMusic(levelMusic[0]);
-		gb.Sound.UpdateMusicVolume(10.5f);
-		gb.Display.UpdateColorPalette(1);
 		
 		energyMeterText.text = energyMeter.ToString();
 	}
@@ -59,12 +57,12 @@ public class GameplayManager : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (GameplaySceneManager.Instance.activeControl)
+		if (GBManager.Instance.activeControl)
 		{
 			if (energyMeter <= 0f)
 			{
 				Time.timeScale = 0f;
-				GameplaySceneManager.Instance.activeControl = false;
+				GBManager.Instance.activeControl = false;
 				
 				deathTrigger?.Invoke();
 				gb.Sound.StopMusic();

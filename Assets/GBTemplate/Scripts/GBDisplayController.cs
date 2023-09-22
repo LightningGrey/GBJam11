@@ -4,119 +4,125 @@ using UnityEngine;
 
 namespace GBTemplate
 {
-    public class GBDisplayController : MonoBehaviour
-    {
-        public Renderer ScreenRenderer;
-        public ColorPalette[] Palettes;
-        public int CurrentPalette;
-        public bool Fading;
+	public class GBDisplayController : MonoBehaviour
+	{
+		public Renderer ScreenRenderer;
+		public ColorPalette[] Palettes;
+		public int CurrentPalette;
+		public bool Fading;
 
-        public void UpdateColorPalette(int palNum)
-        {
-            ScreenRenderer.material.SetColor("_Darkest", Palettes[palNum].Darkest);
-            ScreenRenderer.material.SetColor("_Dark", Palettes[palNum].Dark);
-            ScreenRenderer.material.SetColor("_Light", Palettes[palNum].Light);
-            ScreenRenderer.material.SetColor("_Lightest", Palettes[palNum].Lightest);
-        }
+		public void UpdateColorPalette(int palNum)
+		{
+			ScreenRenderer.material.SetColor("_Darkest", Palettes[palNum].Darkest);
+			ScreenRenderer.material.SetColor("_Dark", Palettes[palNum].Dark);
+			ScreenRenderer.material.SetColor("_Light", Palettes[palNum].Light);
+			ScreenRenderer.material.SetColor("_Lightest", Palettes[palNum].Lightest);
+		}
 
-        public void PaletteCycleNext()
-        {
-            CurrentPalette++;
+		public void PaletteCycleNext()
+		{
+			CurrentPalette++;
 
-            if (CurrentPalette > Palettes.Length - 1)
-            {
-                CurrentPalette = 0;
-            }
+			if (CurrentPalette > Palettes.Length - 1)
+			{
+				CurrentPalette = 0;
+			}
 
-            UpdateColorPalette(CurrentPalette);
-        }
+			UpdateColorPalette(CurrentPalette);
+		}
 
-        public void PaletteCyclePrev()
-        {
-            CurrentPalette--;
+		public void PaletteCyclePrev()
+		{
+			CurrentPalette--;
 
-            if (CurrentPalette < 0)
-            {
-                CurrentPalette = Palettes.Length - 1;
-            }
+			if (CurrentPalette < 0)
+			{
+				CurrentPalette = Palettes.Length - 1;
+			}
 
-            UpdateColorPalette(CurrentPalette);
-        }
+			UpdateColorPalette(CurrentPalette);
+		}
 
-        public IEnumerator FadeToBlack(float fadeSpeed)
-        {
-            Fading = true;
+		public IEnumerator FadeToBlack(float fadeSpeed)
+		{
+			Fading = true;
 
-            while (Fading)
-            {                
-                float value = ScreenRenderer.material.GetFloat("_Fade");
+			while (Fading)
+			{                
+				float value = ScreenRenderer.material.GetFloat("_Fade");
 
-                value = Mathf.Min(0, value - (fadeSpeed * Time.deltaTime));
-                Fading = (value > -1);
+				value = Mathf.Min(0, value - (fadeSpeed * Time.deltaTime));
+				Fading = (value > -1);
 
-                ScreenRenderer.material.SetFloat("_Fade", value);
+				ScreenRenderer.material.SetFloat("_Fade", value);
 
-                yield return null;
-            }
+				yield return null;
+			}
 
-            yield break;
-        }
+			yield break;
+		}
 
-        public IEnumerator FadeFromBlack(float fadeSpeed)
-        {
-            Fading = true;
+		public IEnumerator FadeFromBlack(float fadeSpeed)
+		{
+			Fading = true;
 
-            while (Fading)
-            {
-                float value = ScreenRenderer.material.GetFloat("_Fade");
+			while (Fading)
+			{
+				float value = ScreenRenderer.material.GetFloat("_Fade");
 
-                value = Mathf.Max(-1, value + (fadeSpeed * Time.deltaTime));
-                Fading = (value < 0);
+				value = Mathf.Max(-1, value + (fadeSpeed * Time.deltaTime));
+				Fading = (value < 0);
 
-                ScreenRenderer.material.SetFloat("_Fade", value);
+				ScreenRenderer.material.SetFloat("_Fade", value);
 
-                yield return null;
-            }
+				yield return null;
+			}
 
-            yield break;
-        }
+			yield break;
+		}
 
-        public IEnumerator FadeToWhite(float fadeSpeed)
-        {
-            Fading = true;
+		public IEnumerator FadeToWhite(float fadeSpeed)
+		{
+			Fading = true;
 
-            while (Fading)
-            {
-                float value = ScreenRenderer.material.GetFloat("_Fade");
+			while (Fading)
+			{
+				float value = ScreenRenderer.material.GetFloat("_Fade");
 
-                value = Mathf.Max(0, value + (fadeSpeed * Time.deltaTime));
-                Fading = (value < 1);
+				value = Mathf.Max(0, value + (fadeSpeed * Time.deltaTime));
+				Fading = (value < 1);
 
-                ScreenRenderer.material.SetFloat("_Fade", value);
+				ScreenRenderer.material.SetFloat("_Fade", value);
 
-                yield return null;
-            }
+				yield return null;
+			}
 
-            yield break;
-        }
+			yield break;
+		}
 
-        public IEnumerator FadeFromWhite(float fadeSpeed)
-        {
-            Fading = true;
+		public IEnumerator FadeFromWhite(float fadeSpeed)
+		{
+			Fading = true;
 
-            while (Fading)
-            {
-                float value = ScreenRenderer.material.GetFloat("_Fade");
+			while (Fading)
+			{
+				float value = ScreenRenderer.material.GetFloat("_Fade");
 
-                value = Mathf.Min(1, value - (fadeSpeed * Time.deltaTime));
-                Fading = (value > 0);
+				value = Mathf.Min(1, value - (fadeSpeed * Time.deltaTime));
+				Fading = (value > 0);
 
-                ScreenRenderer.material.SetFloat("_Fade", value);
+				ScreenRenderer.material.SetFloat("_Fade", value);
 
-                yield return null;
-            }
+				yield return null;
+			}
 
-            yield break;
-        }
-    }
+			yield break;
+		}
+		
+		public void InterruptFade()
+		{
+			Fading = false;
+			ScreenRenderer.material.SetFloat("_Fade", 0);
+		}
+	}
 }
