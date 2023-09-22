@@ -12,7 +12,7 @@ public class PlayerInput : MonoBehaviour
 	
 	
 	[Header("References")]
-	private Camera cam;
+	//private Camera cam;
 	public PlayerSprite spriteHandler;
 	public Rigidbody2D rb;
 	
@@ -21,32 +21,24 @@ public class PlayerInput : MonoBehaviour
 	public float speed = 18f;
 	public float speedScale = 1f;
 	public Vector2 direction = Vector2.zero;
-	public bool dead = false;
+	//public bool dead = false;
 	
 	
 	public static event UnityAction interact;
 
-	
-	private void OnEnable()
-	{
-		GameplayManager.deathTrigger += OnDeath;
-	}
-	private void OnDisable()
-	{
-		GameplayManager.deathTrigger -= OnDeath;
-	}
-	
+
+
 	// Start is called before the first frame update
 	void Start()
 	{
 		gb = GBConsoleController.GetInstance();
-		cam = Camera.main;
+		//cam = Camera.main;
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		if (!dead)
+		if (GameplaySceneManager.Instance.activeControl)
 		{
 
 			//movement code
@@ -112,13 +104,7 @@ public class PlayerInput : MonoBehaviour
 
 		direction = Vector2.zero;
 	}
-	
-	
-	void OnDeath()
-	{
-		dead = true;
-		spriteHandler.UpdateDeathSprite();
-	}
+
 	
 	void OnCollisionEnter2D(Collision2D other)
 	{

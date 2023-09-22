@@ -11,17 +11,15 @@ public class PlayerSprite : MonoBehaviour
 	public Animator animationController;
 	
 	
-	// Start is called before the first frame update
-	void Start()
+	private void OnEnable()
 	{
-		
+		GameplayManager.deathTrigger += UpdateDeathSprite;
 	}
-
-	// Update is called once per frame
-	void Update()
+	private void OnDisable()
 	{
-		
+		GameplayManager.deathTrigger -= UpdateDeathSprite;
 	}
+	
 	
 	//TODO: UPDATE SPRITE
 	public void UpdateGameplaySprite(bool up, bool down, bool left, bool right)
@@ -81,7 +79,7 @@ public class PlayerSprite : MonoBehaviour
 	public void DeathAnimationFinish()
 	{
 		animationController.updateMode = AnimatorUpdateMode.Normal;
-		StartCoroutine(GameplayManager.Instance.ReloadScene());
+	 	GameplaySceneManager.Instance.ReloadScene();
 	}
 	
 }
