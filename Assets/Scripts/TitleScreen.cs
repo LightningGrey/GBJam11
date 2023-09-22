@@ -8,7 +8,7 @@ using TMPro;
 public class TitleScreen : MonoBehaviour
 {
 	
-	public GBConsoleController gb;
+	private GBConsoleController gb;
 	public AudioClip titleMusic;
 	public Coroutine currentCoroutine;
 	private int coroutineCount = 0;
@@ -22,6 +22,7 @@ public class TitleScreen : MonoBehaviour
 	public GameObject coverImage;
 	public GameObject titleScreen;
 	public TextMeshProUGUI titleScreenText;
+	public GameObject mainMenu;
 	
 	
 	// Start is called before the first frame update
@@ -50,6 +51,7 @@ public class TitleScreen : MonoBehaviour
 			coverImage.SetActive(false);
 			jamLogo.SetActive(false);
 			credits.SetActive(false);
+			mainMenu.SetActive(true);
 			
 			//currentCoroutine = StartCoroutine(TextFlash());
 			
@@ -99,6 +101,8 @@ public class TitleScreen : MonoBehaviour
 		yield return gb.Display.StartCoroutine(gb.Display.FadeFromBlack(1f));
 		
 		yield return new WaitForSeconds(1f);
+		
+		mainMenu.SetActive(true);
 		
 		//titleScreenText.DOColor(Color.black, 0.3f).SetAutoKill(false).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Flash);
 		//currentCoroutine = StartCoroutine(TextFlash());

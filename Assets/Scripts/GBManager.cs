@@ -38,16 +38,31 @@ public class GBManager : MonoBehaviour
 	void Start()
 	{
 		gb = GBConsoleController.GetInstance();
-		//gb.Display.UpdateColorPalette(1);
+		gb.Display.UpdateColorPalette(1);
 		
 		gb.Sound.UpdateGlobalVolume(10.5f);
 		
-		//if(loadScene != "")
-		//{
-			SceneManager.LoadScene(loadScene);
-		//}
+		SceneManager.LoadScene(loadScene);
 		
 	}
+
+
+	public void LoadNewScene(Scene currentScene, string nextScene)
+	{
+		StartCoroutine(LoadSceneCoroutine(currentScene, nextScene));
+	}
+	
+	public IEnumerator LoadSceneCoroutine(Scene currentScene, string nextScene)
+	{
+		yield return gb.Display.StartCoroutine(gb.Display.FadeToBlack(1f));
+
+		SceneManager.LoadSceneAsync(nextScene);
+
+		yield return gb.Display.StartCoroutine(gb.Display.FadeFromBlack(2f));
+		
+		activeControl = true;
+	}
+	
 
 	public void ReloadScene()
 	{
