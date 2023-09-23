@@ -27,6 +27,10 @@ public class GameplayManager : MonoBehaviour
 	private float speedScale = 1f;
 	
 	
+	[Header("Item Collection")]
+	private int batteriesCollected;
+	private int partsCollected;
+	
 
 	void Awake()
 	{
@@ -98,6 +102,21 @@ public class GameplayManager : MonoBehaviour
 		energyMeterText.text = energyMeter.ToString();
 		
 		//timer = 1f;
+	}
+	
+	public void Collect(bool battery)
+	{
+		if (battery)
+		{
+			batteriesCollected++;
+			energyMeter += 30;
+		}
+		else 
+		{
+			partsCollected++;
+		}
+		
+		
 	}
 	
 	

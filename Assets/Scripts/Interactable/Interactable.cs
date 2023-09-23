@@ -2,15 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public abstract class Interactable : MonoBehaviour
+public enum InteractableType
+{
+	BATTERY,
+	PART,
+	READABLE
+}
+
+
+public class Interactable : MonoBehaviour
 {
 	
-	public Collider2D interactRange;
-	public bool canInteract = false;
+	public int objectID;
+	
+	public InteractableType type;
+	
+	public string text = "";
 	
 	
-	
-	void Interact() {}
+	// void Interact() 
+	// {}
 
 }

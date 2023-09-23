@@ -11,14 +11,19 @@ public class Player : MonoBehaviour
 	public bool hitstun;
 	public float hitstunTimer = 0.4f;
 	public Coroutine currentCoroutine;
+	public Interactable currentInteractable;
+	
+	
 	
 	private void OnEnable()
 	{
 		GameplayManager.deathTrigger += CloseFlash;
+		PlayerInput.interact += OnInteract;
 	}
 	private void OnDisable()
 	{
 		GameplayManager.deathTrigger -= CloseFlash;
+		PlayerInput.interact -= OnInteract;
 	}
 
 	// Update is called once per frame
@@ -55,6 +60,21 @@ public class Player : MonoBehaviour
 			OnHit(other);
 		}
 	}
+	
+	private void OnTriggerStay2D(Collider2D other)
+	{
+		if (other.CompareTag("Interactable") && !hitstun)
+		{
+			currentInteractable = other.gameObject.GetComponent<Interactable>();
+		}
+		
+	}
+	
+	private void OnTriggerExit2D(Collider2D other)
+	{
+		currentInteractable = null;
+	}
+	
 	
 	void OnHit(Collision2D other)
 	{
@@ -97,6 +117,38 @@ public class Player : MonoBehaviour
 		{
 			StopCoroutine(currentCoroutine);
 		}
+	}
+	
+	
+	void OnInteract()
+	{
+		if (currentInteractable != null)
+		{
+			switch(currentInteractable.type)
+			{
+				case InteractableType.BATTERY:
+				{
+					GameplayManager.Instance.Collect(true);
+					currentInteractable.gameObject.SetActive(false);
+					StartCoroutine(UIManager.Instance.UICollectText(true));
+					break;
+				}
+				case InteractableType.PART:
+				{
+					GameplayManager.Instance.Collect(false);
+					currentInteractable.gameObject.SetActive(false);
+					StartCoroutine(UIManager.Instance.UICollectText(false));
+					break;
+				}
+				case InteractableType.READABLE:
+				{
+					//GameplayManager.Instance.Collect(true);
+					break;
+				}
+			}
+			
+		}
+		
 	}
 
 }
