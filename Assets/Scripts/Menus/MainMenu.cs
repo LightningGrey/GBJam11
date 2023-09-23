@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
 {
 	private GBConsoleController gb;
 	
+	public AudioClip selectSFX;
 	public GameObject mainMenu;
 	public GameObject arrow;
 	private int selectionIndex = 0;
@@ -49,6 +50,7 @@ public class MainMenu : MonoBehaviour
 
 			if (gb.Input.ButtonStartJustPressed)
 			{
+				gb.Sound.PlaySound(selectSFX);
 				if (selectionIndex == 0)
 				{
 					StartGame();

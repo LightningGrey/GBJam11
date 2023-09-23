@@ -821,19 +821,19 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_XDamping: 1
-  m_YDamping: 0.5
+  m_XDamping: 0.5
+  m_YDamping: 1
   m_ZDamping: 1
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_CameraDistance: 10
-  m_DeadZoneWidth: 2
-  m_DeadZoneHeight: 0
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 2
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 2
-  m_SoftZoneHeight: 0.8
+  m_SoftZoneWidth: 0.8
+  m_SoftZoneHeight: 2
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
@@ -3612,7 +3612,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 1609827913}
   rb: {fileID: 1897937037}
+  hitSFX: {fileID: 8300000, guid: d27a7f6f4cb76f3428ba0fe45ae49d7d, type: 3}
   hitstun: 0
+  iframes: 0
   hitstunTimer: 0.2
   currentInteractable: {fileID: 0}
 --- !u!4 &1915249077 stripped
@@ -3860,11 +3862,11 @@ Transform:
   m_GameObject: {fileID: 1984161338}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.51284283, y: 0.47661117, z: 0.005762023}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2018344032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2004486829
 GameObject:
@@ -3982,7 +3984,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2018344032
 Transform:
   m_ObjectHideFlags: 0
@@ -3999,6 +4001,7 @@ Transform:
   - {fileID: 1915249077}
   - {fileID: 1544699868}
   - {fileID: 1560348710}
+  - {fileID: 1984161341}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2018996005
@@ -4173,7 +4176,6 @@ SceneRoots:
   - {fileID: 107485795}
   - {fileID: 1897937033}
   - {fileID: 1283193851}
-  - {fileID: 1984161341}
   - {fileID: 2018344032}
   - {fileID: 1018151510}
   - {fileID: 987323112}

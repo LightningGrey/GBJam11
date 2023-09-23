@@ -5,10 +5,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 	
+	[Header("References")]
 	public SpriteRenderer sprite;
 	public Rigidbody2D rb;
+	public AudioClip hitSFX;
 	
+	
+	[Header("Variables")]
 	public bool hitstun;
+	public bool iframes = false;
 	public float hitstunTimer = 0.4f;
 	public Coroutine currentCoroutine;
 	public Interactable currentInteractable;
@@ -47,7 +52,7 @@ public class Player : MonoBehaviour
 	
 	void OnCollisionEnter2D(Collision2D other)
 	{
-		if (other.collider.CompareTag("Obstacles") && !hitstun)
+		if (other.collider.CompareTag("Obstacles") && !iframes)
 		{
 			OnHit(other);
 		}
@@ -55,7 +60,7 @@ public class Player : MonoBehaviour
 	
 	void OnCollisionStay2D(Collision2D other)
 	{
-		if (other.collider.CompareTag("Obstacles") && !hitstun)
+		if (other.collider.CompareTag("Obstacles") && !iframes)
 		{
 			OnHit(other);
 		}
@@ -63,7 +68,7 @@ public class Player : MonoBehaviour
 	
 	private void OnTriggerStay2D(Collider2D other)
 	{
-		if (other.CompareTag("Interactable") && !hitstun)
+		if (other.CompareTag("Interactable") && !iframes)
 		{
 			currentInteractable = other.gameObject.GetComponent<Interactable>();
 		}
@@ -80,11 +85,20 @@ public class Player : MonoBehaviour
 	{
 		var asteroidClass = other.gameObject.GetComponent<Asteroid>();		
 		GameplayManager.Instance.DepleteEnergy(asteroidClass.damage);
+		
+		GBManager.Instance.gb.Sound.PlaySound(hitSFX);
 		hitstun = true;
+		iframes = true;
+		
+		if (GameplayManager.Instance.energyMeter > 0)
+		{
+			// movement	
+			var direction = (other.transform.position - gameObject.transform.position).normalized;
+			gameObject.transform.position -= direction * asteroidClass.knockbackDist;
 			
-		var direction = (other.transform.position - gameObject.transform.position).normalized;
-		gameObject.transform.position -= direction * asteroidClass.knockbackDist;
-		currentCoroutine = StartCoroutine(SpriteFlash());
+			currentCoroutine = StartCoroutine(SpriteFlash());
+		}
+	
 	}
 	
 	
@@ -109,6 +123,7 @@ public class Player : MonoBehaviour
 			flashTimer--;
 		} 
 	
+		iframes = false;
 	}
 
 	public void CloseFlash()

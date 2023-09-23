@@ -536,6 +536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a260835ff9af34844a9bcd207432a0e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectSFX: {fileID: 8300000, guid: 22585b57bc444d24c98c58e14cec8d2c, type: 3}
   mainMenu: {fileID: 667615438}
   arrow: {fileID: 2044379294}
   nextScene: MainGameplayScene
