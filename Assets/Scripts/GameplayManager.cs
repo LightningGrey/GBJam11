@@ -6,6 +6,8 @@ using TMPro;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
+
+// TODO: maybe change this into multiple scripts cause this is bad?
 public class GameplayManager : MonoBehaviour
 {
 	

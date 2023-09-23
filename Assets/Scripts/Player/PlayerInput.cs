@@ -66,7 +66,7 @@ public class PlayerInput : MonoBehaviour
 				interact?.Invoke();
 			}
 
-			if (gb.Input.ButtonBJustPressed)
+			if (gb.Input.ButtonB)
 			{
 				speedScale = 2f;
 				GameplayManager.Instance.ChangeSpeed(3f);
@@ -86,6 +86,14 @@ public class PlayerInput : MonoBehaviour
 
 			spriteHandler.UpdateGameplaySprite(gb.Input.Up, gb.Input.Down,
 				gb.Input.Left, gb.Input.Right);
+		}
+		else
+		{
+			if (speedScale > 1f)
+			{
+				speedScale = 1f;
+				GameplayManager.Instance.ChangeSpeed(1f);
+			}
 		}
 
 	}

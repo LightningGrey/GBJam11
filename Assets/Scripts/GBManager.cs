@@ -42,8 +42,11 @@ public class GBManager : MonoBehaviour
 		
 		gb.Sound.UpdateGlobalVolume(10.5f);
 		
-		SceneManager.LoadScene(loadScene);
-		
+		if (loadScene != "")
+		{
+			SceneManager.LoadScene(loadScene);
+		}
+	
 	}
 	
 	// public void SetActiveControl(bool setter = true)
