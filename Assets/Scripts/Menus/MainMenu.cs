@@ -84,7 +84,7 @@ public class MainMenu : MonoBehaviour
 	
 	void StartGame()
 	{
-		DG.Tweening.DOTween.KillAll();
+		DOTween.KillAll();
 		
 		GBManager.Instance.activeControl = false;
 		GBManager.Instance.LoadNewScene(SceneManager.GetActiveScene(), "MainGameplayScene");

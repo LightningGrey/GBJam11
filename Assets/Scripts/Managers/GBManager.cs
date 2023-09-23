@@ -19,6 +19,15 @@ public class GBManager : MonoBehaviour
 	public bool activeControl = true;
 	public int currentLevel = 0;
 	
+	private int batteriesCollectedTotal;
+	private int partsCollectedTotal;
+	
+	private int batteriesCollectedlv1;
+	private int partsCollectedlv1;
+	
+	private int batteriesCollectedlv2;
+	private int partsCollectedlv2;
+	
 	
 	void Awake()
 	{
