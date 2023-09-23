@@ -22,14 +22,10 @@ public class GameplayManager : MonoBehaviour
 	
 	[Header("Energy Meter")]
 	public int energyMeter = 100;
-	public float timer = 1f;
+	public float energyTimer = 1f;
 	public TextMeshProUGUI energyMeterText;
 	private float speedScale = 1f;
 	
-	
-	//[Header("Global Flags")]
-	//public bool activeGame = true;
-	//public bool dead = false;
 	
 
 	void Awake()
@@ -64,7 +60,7 @@ public class GameplayManager : MonoBehaviour
 			if (energyMeter <= 0f)
 			{
 				Time.timeScale = 0f;
-				GBManager.Instance.activeControl = false;
+				GBManager.Instance.activeControl = false;				
 				
 				deathTrigger?.Invoke();
 				gb.Sound.StopMusic();
@@ -73,16 +69,20 @@ public class GameplayManager : MonoBehaviour
 			}
 			else
 			{
-				timer -= Time.deltaTime * speedScale;
+				energyTimer -= Time.deltaTime * speedScale;
 
-				if (timer <= 0f)
+				if (energyTimer <= 0f)
 				{
-					energyMeter--;
-					energyMeterText.text = energyMeter.ToString();
+					// energyMeter--;
+					// if (energyMeter < 0) { energyMeter = 0;}
+					// energyMeterText.text = energyMeter.ToString();
 
-					timer = 1f;
+					DepleteEnergy();
+	
+					energyTimer = 1f;
 				}
 			}
+			
 		}
 
 	}
@@ -91,5 +91,14 @@ public class GameplayManager : MonoBehaviour
 	{
 		speedScale = speed;
 	}
+	
+	public void DepleteEnergy(int amount = 1)
+	{
+		energyMeter = Mathf.Max(energyMeter - amount, 0);
+		energyMeterText.text = energyMeter.ToString();
+		
+		//timer = 1f;
+	}
+	
 	
 }

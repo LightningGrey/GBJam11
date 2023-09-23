@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac19ea69c220a494d9dc443b69cd5186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollPoint: {fileID: 456131950}
+  scrollPoint: {fileID: 0}
   playerPos: {fileID: 1897937033}
   min: -1.44
   max: 0.16
@@ -562,37 +562,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vcam: {fileID: 901977561}
   spawnPosition: {fileID: 1694151764}
---- !u!1 &456131950
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 456131951}
-  m_Layer: 0
-  m_Name: CameraOffset
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &456131951
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 456131950}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.35999998, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1897937033}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &475651846
 GameObject:
   m_ObjectHideFlags: 3
@@ -2365,7 +2334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac19ea69c220a494d9dc443b69cd5186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollPoint: {fileID: 456131950}
+  scrollPoint: {fileID: 0}
   playerPos: {fileID: 1897937033}
   min: -1.44
   max: 0.16
@@ -2381,9 +2350,10 @@ GameObject:
   - component: {fileID: 1443549985}
   - component: {fileID: 1443549984}
   - component: {fileID: 1443549986}
+  - component: {fileID: 1443549987}
   m_Layer: 0
-  m_Name: Square
-  m_TagString: Untagged
+  m_Name: SmallAsteroid
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2498,8 +2468,22 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.14, y: 0.14}
+  m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
+--- !u!114 &1443549987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443549983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 902dffe42b28fae40be57ad9b35cb566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  knockbackDist: 0.2
 --- !u!1 &1544699866
 GameObject:
   m_ObjectHideFlags: 0
@@ -2651,7 +2635,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 5223506752489e148a8061b57bba5318, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3427,7 +3411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac19ea69c220a494d9dc443b69cd5186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollPoint: {fileID: 456131950}
+  scrollPoint: {fileID: 0}
   playerPos: {fileID: 1897937033}
   min: -1.44
   max: 0.16
@@ -3444,6 +3428,7 @@ GameObject:
   - component: {fileID: 1897937034}
   - component: {fileID: 1897937036}
   - component: {fileID: 1897937037}
+  - component: {fileID: 1897937038}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3465,7 +3450,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1609827914}
-  - {fileID: 456131951}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1897937034
@@ -3528,7 +3512,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.1, y: 0.16}
   m_EdgeRadius: 0
 --- !u!50 &1897937037
 Rigidbody2D:
@@ -3557,6 +3541,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &1897937038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897937032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c9cc16bb5ed5a4f9874b90c0ecd51a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 1609827913}
+  rb: {fileID: 1897937037}
+  hitstun: 0
+  hitstunTimer: 0.2
 --- !u!4 &1915249077 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7654782121534243065, guid: 4d17c0d1ba771c546a8ac46210062831, type: 3}
@@ -3573,9 +3573,10 @@ GameObject:
   - component: {fileID: 1969707240}
   - component: {fileID: 1969707242}
   - component: {fileID: 1969707241}
+  - component: {fileID: 1969707243}
   m_Layer: 0
-  m_Name: Square (1)
-  m_TagString: Untagged
+  m_Name: LargeAsteroid
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3638,7 +3639,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.07, y: 0.07}
+  m_Size: {x: 0.06, y: 0.06}
   m_EdgeRadius: 0
 --- !u!212 &1969707242
 SpriteRenderer:
@@ -3692,6 +3693,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1969707243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969707239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 902dffe42b28fae40be57ad9b35cb566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  knockbackDist: 0.1
 --- !u!1 &1984161338
 GameObject:
   m_ObjectHideFlags: 0
@@ -3927,7 +3942,7 @@ MonoBehaviour:
   levelMusic:
   - {fileID: 8300000, guid: a5abe1db1f17ae84daed694eeed2b6f9, type: 3}
   energyMeter: 999
-  timer: 1
+  energyTimer: 1
   energyMeterText: {fileID: 1720579839}
 --- !u!4 &2018996007
 Transform:

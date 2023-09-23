@@ -11,7 +11,7 @@ public class TitleScreen : MonoBehaviour
 	private GBConsoleController gb;
 	public AudioClip titleMusic;
 	public Coroutine currentCoroutine;
-	private int coroutineCount = 0;
+
 	
 	public Queue<IEnumerator> coroutineQueue = new Queue<IEnumerator>();
 	

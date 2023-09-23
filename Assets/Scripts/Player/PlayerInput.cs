@@ -12,7 +12,7 @@ public class PlayerInput : MonoBehaviour
 	
 	
 	[Header("References")]
-	//private Camera cam;
+	private Player player;
 	public PlayerSprite spriteHandler;
 	public Rigidbody2D rb;
 	
@@ -32,13 +32,13 @@ public class PlayerInput : MonoBehaviour
 	void Start()
 	{
 		gb = GBConsoleController.GetInstance();
-		//cam = Camera.main;
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		if (GBManager.Instance.activeControl)
+		if (GBManager.Instance.activeControl && !player.hitstun)
 		{
 
 			//movement code
@@ -114,9 +114,5 @@ public class PlayerInput : MonoBehaviour
 	}
 
 	
-	void OnCollisionEnter2D(Collision2D other)
-	{
-		//Debug.Log(other.gameObject);
-	}
 
 }
