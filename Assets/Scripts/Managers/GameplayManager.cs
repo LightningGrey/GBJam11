@@ -16,8 +16,11 @@ public class GameplayManager : MonoBehaviour
 	
 	[Header("References")]
 	public List<AudioClip> levelMusic = new List<AudioClip>();
-	private int levelParam = 0;
+	public AudioClip clearAudio;
+	
+	
 	public static event UnityAction deathTrigger;
+	public static event UnityAction clearTrigger;
 
 	
 	[Header("Energy Meter")]
@@ -50,7 +53,8 @@ public class GameplayManager : MonoBehaviour
 	{
 		 //Getting the instance of the console controller, so we can access its functions
 		gb = GBConsoleController.GetInstance();
-		gb.Sound.PlayMusic(levelMusic[0]);
+		
+		gb.Sound.PlayMusic(levelMusic[GBManager.Instance.currentLevel]);
 		
 		energyMeterText.text = energyMeter.ToString();
 	}
@@ -89,6 +93,34 @@ public class GameplayManager : MonoBehaviour
 			
 		}
 
+	}
+	
+	public void ClearLevel()
+	{
+		clearTrigger?.Invoke();
+		
+		gb.Sound.StopMusic();
+		gb.Sound.StopAllSounds();
+		
+		gb.Sound.PlaySound(clearAudio);
+	}
+	
+	public IEnumerator ClearLevelTransition()
+	{
+		gb.Sound.StopMusic();
+		gb.Sound.StopAllSounds();
+		
+		gb.Sound.PlaySound(clearAudio);
+		
+		// shouldn't hardcode but oh well
+		while (gb.Sound.IsSoundPlaying())
+		{
+			yield return null;
+		}
+		
+		yield return new WaitForSeconds(0.3f);
+		
+		GBManager.Instance.LoadNewScene(SceneManager.GetActiveScene(), "LevelSelect");
 	}
 
 	public void ChangeSpeed(float speed)

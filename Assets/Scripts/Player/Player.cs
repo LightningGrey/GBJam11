@@ -160,6 +160,11 @@ public class Player : MonoBehaviour
 					//GameplayManager.Instance.Collect(true);
 					break;
 				}
+				case InteractableType.SHUTTLE:
+				{
+					GameplayManager.Instance.ClearLevel();
+					break;
+				}
 			}
 			
 		}

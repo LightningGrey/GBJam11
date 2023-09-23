@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera to RenderTexture
       objectReference: {fileID: 0}
+    - target: {fileID: 2525107258370788989, guid: 0230a887d8a1fcf4d80718d08ce691dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -257,7 +261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1926984690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +277,7 @@ MonoBehaviour:
   gb: {fileID: 0}
   loadScene: TitleMainMenu
   activeControl: 1
+  currentLevel: 0
 --- !u!4 &1926984691
 Transform:
   m_ObjectHideFlags: 0

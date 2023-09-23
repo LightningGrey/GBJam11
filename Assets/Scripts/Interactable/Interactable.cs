@@ -6,7 +6,8 @@ public enum InteractableType
 {
 	BATTERY,
 	PART,
-	READABLE
+	READABLE,
+	SHUTTLE
 }
 
 

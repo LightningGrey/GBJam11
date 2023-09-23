@@ -89,4 +89,9 @@ public class PlayerSprite : MonoBehaviour
 	 	GBManager.Instance.ReloadScene();
 	}
 	
+	public void ClearAnimation()
+	{
+		animationController.Play("Clear");
+	}
+	
 }

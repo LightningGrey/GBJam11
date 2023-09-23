@@ -17,6 +17,7 @@ public class GBManager : MonoBehaviour
 	
 	[Header("Global Flags")]
 	public bool activeControl = true;
+	public int currentLevel = 0;
 	
 	
 	void Awake()
@@ -91,5 +92,6 @@ public class GBManager : MonoBehaviour
 		
 		activeControl = true;
 	}
+	
 
 }
