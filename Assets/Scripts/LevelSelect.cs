@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using GBTemplate;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelSelect : MonoBehaviour
@@ -29,6 +30,8 @@ public class LevelSelect : MonoBehaviour
 	{
 		
 		gb = GBConsoleController.GetInstance();
+		levelIndex = GBManager.Instance.currentLevel;	
+		
 		UpdateLevelSelect();
 	}
 
@@ -50,6 +53,15 @@ public class LevelSelect : MonoBehaviour
 				UpdateLevelSelect();
 			}
 			
+			if (gb.Input.ButtonAJustPressed)
+			{
+				DOTween.KillAll();
+				GBManager.Instance.currentLevel = levelIndex;	
+				GBManager.Instance.LoadNewScene(SceneManager.GetActiveScene(), 
+					GBManager.Instance.sceneList[levelIndex]);
+			}
+			
+			
 			if (gb.Input.ButtonBJustPressed)
 			{
 				stageTitle.SetActive(!stageTitle.activeSelf);
@@ -61,7 +73,7 @@ public class LevelSelect : MonoBehaviour
 	
 	void UpdateLevelSelect()
 	{
-		
+
 		currentImage.GetComponent<Image>().sprite = levelSprites[levelIndex];
 		
 		// fixes a minor

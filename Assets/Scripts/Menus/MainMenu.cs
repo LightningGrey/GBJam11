@@ -87,7 +87,7 @@ public class MainMenu : MonoBehaviour
 		DOTween.KillAll();
 		
 		GBManager.Instance.activeControl = false;
-		GBManager.Instance.LoadNewScene(SceneManager.GetActiveScene(), "MainGameplayScene");
+		GBManager.Instance.LoadNewScene(SceneManager.GetActiveScene(), "LevelSelect");
 	}
 	
 	void Options()

@@ -291,6 +291,58 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 884071373}
   m_SourcePrefab: {fileID: 100100000, guid: 0230a887d8a1fcf4d80718d08ce691dd, type: 3}
+--- !u!1 &145184365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 145184366}
+  - component: {fileID: 145184367}
+  m_Layer: 0
+  m_Name: Level1Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &145184366
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145184365}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &145184367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145184365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df16f800cbe5cf46ac678ba21148ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  vcams:
+  - {fileID: 1744597841}
+  - {fileID: 901977561}
+  batteries:
+  - {fileID: 1940633518}
+  parts:
+  - {fileID: 981963658}
 --- !u!1 &251752162
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,7 +1021,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 0
-    m_Time: 2
+    m_Time: 0.1
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -1061,7 +1113,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 11
+  m_Priority: 1
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 1897937033}
@@ -1089,6 +1141,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6652976565203074670, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
   m_PrefabInstance: {fileID: 9052675422716251638}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &981963658 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2811754694529182085, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
+  m_PrefabInstance: {fileID: 9052675422716251638}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f02625684a9b2047bffedc54ded958c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &987323111
 GameObject:
   m_ObjectHideFlags: 0
@@ -2059,7 +2122,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1378645012}
-  - component: {fileID: 1378645013}
   m_Layer: 0
   m_Name: CameraManager (1)
   m_TagString: Untagged
@@ -2084,23 +2146,6 @@ Transform:
   - {fileID: 1744597838}
   m_Father: {fileID: 1018151510}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1378645013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1378645011}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac19ea69c220a494d9dc443b69cd5186, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollPoint: {fileID: 0}
-  playerPos: {fileID: 1897937033}
-  min: -1.44
-  max: 0.16
-  offset: 0
 --- !u!4 &1443549985 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2716062160924144152, guid: 89536f4fd9a21f74b99416de9a2ce706, type: 3}
@@ -2183,6 +2228,7 @@ MonoBehaviour:
   gb: {fileID: 0}
   loadScene: 
   activeControl: 1
+  currentLevel: 0
 --- !u!4 &1560348710
 Transform:
   m_ObjectHideFlags: 0
@@ -2717,7 +2763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BoundingShape2D: {fileID: 1762201568}
-  m_Damping: 0.5
+  m_Damping: 0.1
   m_MaxWindowSize: 1.44
 --- !u!114 &1744597840
 MonoBehaviour:
@@ -2747,7 +2793,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 11
+  m_Priority: 1
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 1897937033}
@@ -2996,7 +3042,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1876915654}
-  - component: {fileID: 1876915655}
   m_Layer: 0
   m_Name: CameraManager (1)
   m_TagString: Untagged
@@ -3021,23 +3066,6 @@ Transform:
   - {fileID: 901977558}
   m_Father: {fileID: 987323112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1876915655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876915653}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac19ea69c220a494d9dc443b69cd5186, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollPoint: {fileID: 0}
-  playerPos: {fileID: 1897937033}
-  min: -1.44
-  max: 0.16
-  offset: 0
 --- !u!1 &1897937032
 GameObject:
   m_ObjectHideFlags: 0
@@ -3187,6 +3215,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7654782121534243065, guid: 4d17c0d1ba771c546a8ac46210062831, type: 3}
   m_PrefabInstance: {fileID: 1073559523}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1940633518 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4390423430163715478, guid: 9e16180e0f8dbfb438d75fba7584af0e, type: 3}
+  m_PrefabInstance: {fileID: 2709875102837381917}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f02625684a9b2047bffedc54ded958c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1962254920
 GameObject:
   m_ObjectHideFlags: 0
@@ -3357,6 +3396,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2965518249dea4193f730c767a24ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneList:
+  - Level1
+  - Level2
   levelMusic:
   - {fileID: 8300000, guid: a5abe1db1f17ae84daed694eeed2b6f9, type: 3}
   - {fileID: 8300000, guid: 5ffaee2c2542b8149b5c13a97a766f3d, type: 3}
@@ -3558,6 +3600,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1962254921}
     m_Modifications:
+    - target: {fileID: 2811754694529182085, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
+      propertyPath: objectID
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3644654695613861922, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
       propertyPath: m_Name
       value: Part
@@ -3616,5 +3662,6 @@ SceneRoots:
   - {fileID: 1897937033}
   - {fileID: 1283193851}
   - {fileID: 2018344032}
+  - {fileID: 145184366}
   - {fileID: 1018151510}
   - {fileID: 987323112}

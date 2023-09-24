@@ -15,7 +15,9 @@ public class GameplayManager : MonoBehaviour
 	private GBConsoleController gb;
 	
 	[Header("References")]
-	public List<AudioClip> levelMusic = new List<AudioClip>();
+	//public List<string> sceneList = new List<string>();
+	
+	public AudioClip levelMusic;
 	public AudioClip clearAudio;
 	
 	
@@ -54,7 +56,9 @@ public class GameplayManager : MonoBehaviour
 		 //Getting the instance of the console controller, so we can access its functions
 		gb = GBConsoleController.GetInstance();
 		
-		gb.Sound.PlayMusic(levelMusic[GBManager.Instance.currentLevel]);
+		//SceneManager.LoadScene(sceneList[GBManager.Instance.currentLevel], LoadSceneMode.Additive);
+		
+		gb.Sound.PlayMusic(levelMusic);
 		
 		energyMeterText.text = energyMeter.ToString();
 	}

@@ -275,7 +275,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gb: {fileID: 0}
-  loadScene: LevelSelect
+  loadScene: TitleMainMenu
+  sceneList:
+  - Level1
+  - Level2
   activeControl: 1
   currentLevel: 0
 --- !u!4 &1926984691

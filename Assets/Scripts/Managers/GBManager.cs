@@ -14,19 +14,27 @@ public class GBManager : MonoBehaviour
 	
 	public string loadScene = "";
 	
+	[Header("References")]
+	public List<string> sceneList = new List<string>();
 	
 	[Header("Global Flags")]
 	public bool activeControl = true;
 	public int currentLevel = 0;
 	
 	private int batteriesCollectedTotal;
+	private int batteriesTotal = 6;
 	private int partsCollectedTotal;
+	private int partsTotal = 10;
 	
 	private int batteriesCollectedlv1;
+	private int batterieslv1 = 3;
 	private int partsCollectedlv1;
+	private int partslv1 = 5;
 	
 	private int batteriesCollectedlv2;
+	private int batterieslv2 = 3;
 	private int partsCollectedlv2;
+	private int partslv2 = 5;
 	
 	
 	void Awake()
