@@ -57,7 +57,7 @@ public class MainMenu : MonoBehaviour
 				}
 				else
 				{
-					Options();
+					//StartCoroutine(Options());
 				}
 			}
 		}
@@ -90,10 +90,17 @@ public class MainMenu : MonoBehaviour
 		GBManager.Instance.LoadNewScene(SceneManager.GetActiveScene(), "LevelSelect");
 	}
 	
-	void Options()
-	{
+	// public IEnumerator Options()
+	// {
+	// 	DOTween.KillAll();
+	// 	GBManager.Instance.activeControl = false;
 		
-	}
+	// 	yield return GBManager.Instance.gb.Display.StartCoroutine(GBManager.Instance.gb.Display.FadeToBlack(2f));
+		
+		
+	// 	yield return GBManager.Instance.gb.Display.StartCoroutine(GBManager.Instance.gb.Display.FadeFromBlack(2f));
+		
+	// }
 	
 	
 }

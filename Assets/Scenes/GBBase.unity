@@ -279,8 +279,17 @@ MonoBehaviour:
   sceneList:
   - Level1
   - Level2
+  colorize: 1
   activeControl: 1
   currentLevel: 0
+  batteriesCollectedlv1: 
+  batterieslv1: 3
+  partsCollectedlv1: 
+  partslv1: 5
+  batteriesCollectedlv2: 
+  batterieslv2: 3
+  partsCollectedlv2: 
+  partslv2: 5
 --- !u!4 &1926984691
 Transform:
   m_ObjectHideFlags: 0

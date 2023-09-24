@@ -26,7 +26,8 @@ public class GameplayManager : MonoBehaviour
 
 	
 	[Header("Energy Meter")]
-	public int energyMeter = 60;
+	public int energyMeter = 50;
+	public int batteryAmount = 25;
 	public float energyTimer = 1f;
 	public TextMeshProUGUI energyMeterText;
 	private float speedScale = 1f;
@@ -60,6 +61,9 @@ public class GameplayManager : MonoBehaviour
 		
 		gb.Sound.PlayMusic(levelMusic);
 		
+		energyMeter += batteryAmount * (GBManager.Instance.batteriesCollectedlv1.Count +
+			GBManager.Instance.batteriesCollectedlv2.Count);
+		
 		energyMeterText.text = energyMeter.ToString();
 	}
 
@@ -71,13 +75,7 @@ public class GameplayManager : MonoBehaviour
 		{
 			if (energyMeter <= 0f)
 			{
-				Time.timeScale = 0f;
-				GBManager.Instance.activeControl = false;				
-				
-				deathTrigger?.Invoke();
-				gb.Sound.StopMusic();
-				
-				Time.timeScale = 1;
+				OnDeath();
 			}
 			else
 			{
@@ -97,6 +95,17 @@ public class GameplayManager : MonoBehaviour
 			
 		}
 
+	}
+	
+	public void OnDeath()
+	{
+		Time.timeScale = 0f;
+		GBManager.Instance.activeControl = false;				
+				
+		deathTrigger?.Invoke();
+		gb.Sound.StopMusic();
+				
+		Time.timeScale = 1;
 	}
 	
 	public void ClearLevel()
@@ -152,7 +161,7 @@ public class GameplayManager : MonoBehaviour
 		if (battery)
 		{
 			batteriesCollected.Add(ID);
-			energyMeter += 20;
+			energyMeter += batteryAmount;
 		}
 		else 
 		{

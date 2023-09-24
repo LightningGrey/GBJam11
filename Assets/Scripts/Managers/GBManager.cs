@@ -78,7 +78,7 @@ public class GBManager : MonoBehaviour
 	
 	public IEnumerator LoadSceneCoroutine(Scene currentScene, string nextScene)
 	{
-		yield return gb.Display.StartCoroutine(gb.Display.FadeToBlack(1f));
+		yield return gb.Display.StartCoroutine(gb.Display.FadeToBlack(2f));
 		yield return new WaitForSeconds(1f);
 
 		SceneManager.LoadScene(nextScene);
@@ -97,7 +97,7 @@ public class GBManager : MonoBehaviour
 	
 	public IEnumerator ReloadSceneCoroutine()
 	{
-		yield return gb.Display.StartCoroutine(gb.Display.FadeToBlack(1f));
+		yield return gb.Display.StartCoroutine(gb.Display.FadeToBlack(2f));
 		yield return new WaitForSeconds(1f);
 
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
