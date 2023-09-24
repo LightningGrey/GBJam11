@@ -10,7 +10,8 @@ public class MainMenu : MonoBehaviour
 	private GBConsoleController gb;
 	
 	public AudioClip selectSFX;
-	public GameObject mainMenu;
+	//public GameObject text;
+	public GameObject options;
 	public GameObject arrow;
 	private int selectionIndex = 0;
 	public Coroutine currentCoroutine;
@@ -24,11 +25,13 @@ public class MainMenu : MonoBehaviour
 		gb = GBConsoleController.GetInstance();
 		
 		GBManager.Instance.activeControl = false;
+		
+		//StartCoroutine(UIFlash());
 
-		mainMenu.transform.DOLocalMoveY(-36f, 1f, true).SetEase(Ease.Linear).OnComplete(
-			() => arrow.SetActive(true)).OnComplete(
-				//() => GBManager.Instance.activeControl = true).OnComplete(
-					() => currentCoroutine = StartCoroutine(UIFlash()));
+		// mainMenu.transform.DOLocalMoveY(-36f, 1f, true).SetEase(Ease.Linear).OnComplete(
+		// 	() => arrow.SetActive(true)).OnComplete(
+		// 		//() => GBManager.Instance.activeControl = true).OnComplete(
+		// 			() => currentCoroutine = StartCoroutine(UIFlash()));
 
 	}
 
@@ -37,16 +40,25 @@ public class MainMenu : MonoBehaviour
 	{
 		if (GBManager.Instance.activeControl)
 		{
-			if (gb.Input.DownJustPressed && selectionIndex == 0)
-			{
-				selectionIndex++;
-				arrow.transform.localPosition -= new Vector3(0f, 22f);
-			}
-			else if (gb.Input.UpJustPressed && selectionIndex == 1)
-			{
-				selectionIndex--;
-				arrow.transform.localPosition += new Vector3(0f, 22f);
-			}
+			// if (gb.Input.DownJustPressed && selectionIndex == 0)
+			// {
+			// 	selectionIndex++;
+			// 	arrow.transform.localPosition -= new Vector3(0f, 22f);
+			// }
+			// else if (gb.Input.UpJustPressed && selectionIndex == 1)
+			// {
+			// 	selectionIndex--;
+			// 	arrow.transform.localPosition += new Vector3(0f, 22f);
+			// }
+			
+			
+			//TODO: uncomment later if want options
+			// if (gb.Input.ButtonSelectPressedTime > 2f && gb.Input.DownPressedTime > 2f && !options.activeSelf)
+			// {
+				
+			// 	StartCoroutine(Options());
+			// }
+			
 
 			if (gb.Input.ButtonStartJustPressed)
 			{
@@ -55,52 +67,53 @@ public class MainMenu : MonoBehaviour
 				{
 					StartGame();
 				}
-				else
-				{
-					//StartCoroutine(Options());
-				}
 			}
 		}
 
 	}
 	
-	public IEnumerator UIFlash()
-	{
-		GBManager.Instance.activeControl = true;
+	// public IEnumerator UIFlash()
+	// {
+	// 	yield return new WaitForSeconds(0.3f);
+		
+	// 	GBManager.Instance.activeControl = true;
 
-		do
-		{
-			arrow.gameObject.SetActive(false);
-			yield return new WaitForSeconds(0.3f);
+	// 	do
+	// 	{
+	// 		arrow.gameObject.SetActive(false);
+	// 		yield return new WaitForSeconds(0.3f);
 				
-			arrow.gameObject.SetActive(true);
-			yield return new WaitForSeconds(0.3f);	
-		} 
-		while (!gb.Input.ButtonStartJustPressed);
+	// 		arrow.gameObject.SetActive(true);
+	// 		yield return new WaitForSeconds(0.3f);	
+	// 	} 
+	// 	while (!gb.Input.ButtonStartJustPressed);
 
 	
-	}
+	// }
 	
 	
 	void StartGame()
 	{
-		DOTween.KillAll();
+		//DOTween.KillAll();
 		
 		GBManager.Instance.activeControl = false;
 		GBManager.Instance.LoadNewScene(SceneManager.GetActiveScene(), "LevelSelect");
 	}
 	
-	// public IEnumerator Options()
-	// {
-	// 	DOTween.KillAll();
-	// 	GBManager.Instance.activeControl = false;
+	public IEnumerator Options()
+	{
+		//DOTween.KillAll();
+		GBManager.Instance.activeControl = false;
 		
-	// 	yield return GBManager.Instance.gb.Display.StartCoroutine(GBManager.Instance.gb.Display.FadeToBlack(2f));
+		yield return GBManager.Instance.gb.Display.StartCoroutine(GBManager.Instance.gb.Display.FadeToBlack(2f));
 		
+		options.SetActive(true);
 		
-	// 	yield return GBManager.Instance.gb.Display.StartCoroutine(GBManager.Instance.gb.Display.FadeFromBlack(2f));
+		yield return GBManager.Instance.gb.Display.StartCoroutine(GBManager.Instance.gb.Display.FadeFromBlack(2f));
 		
-	// }
+		GBManager.Instance.activeControl = true;
+		
+	}
 	
 	
 }

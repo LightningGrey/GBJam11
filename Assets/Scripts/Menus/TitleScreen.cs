@@ -53,9 +53,10 @@ public class TitleScreen : MonoBehaviour
 			credits.SetActive(false);
 			mainMenu.SetActive(true);
 			
-			//currentCoroutine = StartCoroutine(TextFlash());
+			currentCoroutine = StartCoroutine(TextFlash());
 			
 			//currentCoroutine = StartCoroutine(coroutineQueue.Dequeue());
+			
 		}
 
 	}
@@ -103,27 +104,30 @@ public class TitleScreen : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 		
 		mainMenu.SetActive(true);
-		
+
 		//titleScreenText.DOColor(Color.black, 0.3f).SetAutoKill(false).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Flash);
-		//currentCoroutine = StartCoroutine(TextFlash());
+		currentCoroutine = StartCoroutine(TextFlash());
 	}
-	
-	// public IEnumerator TextFlash()
-	// {
 
-	// 	do
-	// 	{
-	// 		titleScreenText.gameObject.SetActive(false);
-	// 		yield return new WaitForSeconds(0.3f);
-				
-	// 		titleScreenText.gameObject.SetActive(true);
-	// 		yield return new WaitForSeconds(0.3f);	
-	// 	} 
-	// 	while (!gb.Input.ButtonStartJustPressed);
+	public IEnumerator TextFlash()
+	{	
+		yield return new WaitForSeconds(0.3f);
+		
+		GBManager.Instance.activeControl = true;
 
-	
-	// }
-	
+		do
+		{
+			titleScreenText.gameObject.SetActive(false);
+			yield return new WaitForSeconds(0.3f);
+
+			titleScreenText.gameObject.SetActive(true);
+			yield return new WaitForSeconds(0.3f);	
+		} 
+		while (!gb.Input.ButtonStartJustPressed);
+
+
+	}
+
 
 
 }
