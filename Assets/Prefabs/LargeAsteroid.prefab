@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5907632980491637379}
   - component: {fileID: 9198818674213993095}
   - component: {fileID: 8469812751586940906}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LargeAsteroid
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -145,3 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   knockbackDist: 0.2
+  type: 0
+  duration: 0
+  originalLocation: {x: 0, y: 0, z: 0}
+  endLocation: 0

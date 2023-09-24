@@ -248,7 +248,7 @@ MonoBehaviour:
   levelSprites:
   - {fileID: 21300000, guid: 2f2ee904b1dc80e4abd0b5b490df0d8d, type: 3}
   - {fileID: 21300000, guid: bd09be83e983d2c4fb8429607a19df4e, type: 3}
-  - {fileID: 21300000, guid: 2656fbb3514799f44afa4df060ea7e29, type: 3}
+  - {fileID: 21300000, guid: 93d7eaac0d605f24aa9dba6c7d761bda, type: 3}
   menuMusic: {fileID: 8300000, guid: bf3f6b45d03f0d5479b4cf7d8fe38102, type: 3}
   selectSFX: {fileID: 8300000, guid: 22585b57bc444d24c98c58e14cec8d2c, type: 3}
   levelIndex: 0

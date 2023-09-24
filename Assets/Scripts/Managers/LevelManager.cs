@@ -16,11 +16,13 @@ public class LevelManager : MonoBehaviour
 	void OnEnable()
 	{
 		ScreenTransition.enterTrigger += LoadArea;
+		ScreenTransition.unloadTrigger += UnloadArea;
 	}
 	
 	void OnDisable()
 	{
 		ScreenTransition.enterTrigger -= LoadArea;
+		ScreenTransition.unloadTrigger -= UnloadArea;
 	}
 	
 	
@@ -114,15 +116,12 @@ public class LevelManager : MonoBehaviour
 	void LoadArea(int areaID)
 	{
 		areaManager[areaID].SetActive(true);
-		
-		for (int i = 0; i < areaManager.Count; i++)
-		{
-			if (i != areaID)
-			{
-				areaManager[i].SetActive(false);
-			}
-		}
-		
-		
+			
 	}
+	
+	void UnloadArea(int areaID)
+	{
+		areaManager[areaID].SetActive(false);
+	}
+	
 }

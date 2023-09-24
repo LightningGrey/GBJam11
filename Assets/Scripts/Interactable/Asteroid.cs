@@ -22,27 +22,49 @@ public class Asteroid : MonoBehaviour
 	public AsteroidType type = AsteroidType.STATIC;
 	
 	// moving ones only
-	public int speed;
-	public Vector3 endLocation;
-
+	public int duration;
+	
+	public Vector3 originalLocation;
+	public float endLocation;
+	
+	private Tweener movementTween;
+	
+	public void Start()
+	{
+		originalLocation = transform.localPosition;
+	}
 	
 	
 	public void OnEnable()
 	{
+		
+		
 		if (type == AsteroidType.XLOOP)
 		{
-			
+			XMovement();
 		}
 		if (type == AsteroidType.YLOOP)
 		{
-			
+			YMovement();
 		}
 	}
 	
 	public void OnDisable()
 	{
-		DOTween.KillAll();
+		movementTween.Kill();
+		transform.position = originalLocation;
 	}
+	
+	void XMovement()
+	{
+		movementTween = transform.DOLocalMoveX(endLocation, duration).SetAutoKill(false).SetLoops(-1, LoopType.Restart).SetEase(Ease.Linear);
+	}
+	
+	void YMovement()
+	{
+		movementTween = transform.DOLocalMoveY(endLocation, duration).SetAutoKill(false).SetLoops(-1, LoopType.Restart).SetEase(Ease.Linear);
+	}
+	
 	
 	
 }

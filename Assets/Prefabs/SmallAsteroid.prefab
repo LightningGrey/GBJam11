@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6819376323167625292}
   - component: {fileID: 7267824309669132808}
   - component: {fileID: 4608389169161605626}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SmallAsteroid
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -145,3 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   knockbackDist: 0.1
+  type: 0
+  duration: 0
+  originalLocation: {x: 0, y: 0, z: 0}
+  endLocation: 0
