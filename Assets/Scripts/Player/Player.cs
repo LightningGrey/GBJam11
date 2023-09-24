@@ -143,14 +143,14 @@ public class Player : MonoBehaviour
 			{
 				case InteractableType.BATTERY:
 				{
-					GameplayManager.Instance.Collect(true);
+					GameplayManager.Instance.Collect(true, currentInteractable.objectID);
 					currentInteractable.gameObject.SetActive(false);
 					StartCoroutine(UIManager.Instance.UICollectText(true));
 					break;
 				}
 				case InteractableType.PART:
 				{
-					GameplayManager.Instance.Collect(false);
+					GameplayManager.Instance.Collect(false, currentInteractable.objectID);
 					currentInteractable.gameObject.SetActive(false);
 					StartCoroutine(UIManager.Instance.UICollectText(false));
 					break;

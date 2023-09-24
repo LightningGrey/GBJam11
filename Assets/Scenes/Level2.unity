@@ -229,11 +229,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2525107258370788978, guid: 0230a887d8a1fcf4d80718d08ce691dd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.2556221
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2525107258370788978, guid: 0230a887d8a1fcf4d80718d08ce691dd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.41206
+      value: 0.16202998
       objectReference: {fileID: 0}
     - target: {fileID: 2525107258370788978, guid: 0230a887d8a1fcf4d80718d08ce691dd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -860,7 +860,7 @@ GameObject:
   - component: {fileID: 836676888}
   m_Layer: 0
   m_Name: Shuttle
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2225,6 +2225,7 @@ MonoBehaviour:
   gb: {fileID: 0}
   loadScene: 
   sceneList: []
+  colorize: 1
   activeControl: 1
   currentLevel: 0
 --- !u!4 &1560348710

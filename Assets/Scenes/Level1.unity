@@ -335,14 +335,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df16f800cbe5cf46ac678ba21148ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  vcams:
-  - {fileID: 1744597841}
-  - {fileID: 901977561}
-  batteries:
-  - {fileID: 1940633518}
-  parts:
-  - {fileID: 981963658}
+  player: {fileID: 1897937032}
+  items:
+  - {fileID: 2709875102837381919}
+  - {fileID: 9052675422716251640}
 --- !u!1 &251752162
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,7 +859,7 @@ GameObject:
   - component: {fileID: 836676888}
   m_Layer: 0
   m_Name: Shuttle
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1141,17 +1137,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6652976565203074670, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
   m_PrefabInstance: {fileID: 9052675422716251638}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &981963658 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2811754694529182085, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
-  m_PrefabInstance: {fileID: 9052675422716251638}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f02625684a9b2047bffedc54ded958c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &987323111
 GameObject:
   m_ObjectHideFlags: 0
@@ -2227,8 +2212,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gb: {fileID: 0}
   loadScene: 
+  sceneList: []
+  colorize: 1
   activeControl: 1
   currentLevel: 0
+  batteriesCollectedlv1: 
+  batterieslv1: 3
+  partsCollectedlv1: 
+  partslv1: 5
+  batteriesCollectedlv2: 
+  batterieslv2: 3
+  partsCollectedlv2: 
+  partslv2: 5
 --- !u!4 &1560348710
 Transform:
   m_ObjectHideFlags: 0
@@ -3215,17 +3210,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7654782121534243065, guid: 4d17c0d1ba771c546a8ac46210062831, type: 3}
   m_PrefabInstance: {fileID: 1073559523}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1940633518 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4390423430163715478, guid: 9e16180e0f8dbfb438d75fba7584af0e, type: 3}
-  m_PrefabInstance: {fileID: 2709875102837381917}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f02625684a9b2047bffedc54ded958c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1962254920
 GameObject:
   m_ObjectHideFlags: 0
@@ -3347,7 +3331,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2018344032
 Transform:
   m_ObjectHideFlags: 0
@@ -3396,16 +3380,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2965518249dea4193f730c767a24ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneList:
-  - Level1
-  - Level2
-  levelMusic:
-  - {fileID: 8300000, guid: a5abe1db1f17ae84daed694eeed2b6f9, type: 3}
-  - {fileID: 8300000, guid: 5ffaee2c2542b8149b5c13a97a766f3d, type: 3}
+  levelMusic: {fileID: 8300000, guid: a5abe1db1f17ae84daed694eeed2b6f9, type: 3}
   clearAudio: {fileID: 8300000, guid: 5f5d7640325416148bab2d0589a10bbf, type: 3}
   energyMeter: 50
   energyTimer: 1
   energyMeterText: {fileID: 1720579839}
+  batteriesCollected: 
+  partsCollected: 
 --- !u!4 &2018996007
 Transform:
   m_ObjectHideFlags: 0
@@ -3535,6 +3516,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e16180e0f8dbfb438d75fba7584af0e, type: 3}
+--- !u!114 &2709875102837381919 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4390423430163715478, guid: 9e16180e0f8dbfb438d75fba7584af0e, type: 3}
+  m_PrefabInstance: {fileID: 2709875102837381917}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f02625684a9b2047bffedc54ded958c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3269138047878782357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3653,6 +3645,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
+--- !u!114 &9052675422716251640 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2811754694529182085, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
+  m_PrefabInstance: {fileID: 9052675422716251638}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f02625684a9b2047bffedc54ded958c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

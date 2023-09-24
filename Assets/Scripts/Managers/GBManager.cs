@@ -18,23 +18,21 @@ public class GBManager : MonoBehaviour
 	public List<string> sceneList = new List<string>();
 	
 	[Header("Global Flags")]
+	public bool colorize = true;
 	public bool activeControl = true;
 	public int currentLevel = 0;
 	
-	private int batteriesCollectedTotal;
-	private int batteriesTotal = 6;
-	private int partsCollectedTotal;
-	private int partsTotal = 10;
 	
-	private int batteriesCollectedlv1;
-	private int batterieslv1 = 3;
-	private int partsCollectedlv1;
-	private int partslv1 = 5;
+	[Header("Collectibles Info")]
+	public List<int> batteriesCollectedlv1 = new List<int>();
+	public int batterieslv1 = 3;
+	public List<int> partsCollectedlv1 = new List<int>();
+	public int partslv1 = 5;
 	
-	private int batteriesCollectedlv2;
-	private int batterieslv2 = 3;
-	private int partsCollectedlv2;
-	private int partslv2 = 5;
+	public List<int> batteriesCollectedlv2 = new List<int>();
+	public int batterieslv2 = 3;
+	public List<int> partsCollectedlv2 = new List<int>();
+	public int partslv2 = 5;
 	
 	
 	void Awake()
@@ -109,6 +107,25 @@ public class GBManager : MonoBehaviour
 		
 		activeControl = true;
 	}
+	
+	
+	//hardcoding in the crunch
+	public void ObtainParts()
+	{
+		if (currentLevel == 0)
+		{
+			batteriesCollectedlv1.AddRange(GameplayManager.Instance.batteriesCollected);	
+			partsCollectedlv1.AddRange(GameplayManager.Instance.partsCollected);
+		}
+		else if (currentLevel == 1)
+		{
+			batteriesCollectedlv2.AddRange(GameplayManager.Instance.batteriesCollected);	
+			partsCollectedlv2.AddRange(GameplayManager.Instance.partsCollected);
+		}
+		
+		
+	}
+	
 	
 
 }

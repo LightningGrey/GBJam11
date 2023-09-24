@@ -14,10 +14,12 @@ public class PlayerSprite : MonoBehaviour
 	private void OnEnable()
 	{
 		GameplayManager.deathTrigger += UpdateDeathSprite;
+		GameplayManager.clearTrigger += ClearAnimation;
 	}
 	private void OnDisable()
 	{
 		GameplayManager.deathTrigger -= UpdateDeathSprite;
+		GameplayManager.clearTrigger -= ClearAnimation;
 	}
 	
 	

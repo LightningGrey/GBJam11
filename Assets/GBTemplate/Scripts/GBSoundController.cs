@@ -32,8 +32,12 @@ namespace GBTemplate
 		}
 		
 		public bool IsSoundPlaying()
+		{
+		   return (soundSources[0].isPlaying) || (soundSources[1].isPlaying);
+		}
+		public bool IsMusicPlaying()
         {
-           return (soundSources[0].isPlaying ||soundSources[0] == null) && (soundSources[1].isPlaying ||soundSources[1] == null);
+           return musicSource.isPlaying;
         }
 
 		public void LoopSound(AudioClip clip)

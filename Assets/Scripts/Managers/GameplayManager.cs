@@ -26,15 +26,15 @@ public class GameplayManager : MonoBehaviour
 
 	
 	[Header("Energy Meter")]
-	public int energyMeter = 100;
+	public int energyMeter = 60;
 	public float energyTimer = 1f;
 	public TextMeshProUGUI energyMeterText;
 	private float speedScale = 1f;
 	
 	
 	[Header("Item Collection")]
-	private int batteriesCollected;
-	private int partsCollected;
+	public List<int> batteriesCollected = new List<int>();
+	public List<int> partsCollected = new List<int>();
 	
 
 	void Awake()
@@ -101,28 +101,35 @@ public class GameplayManager : MonoBehaviour
 	
 	public void ClearLevel()
 	{
-		clearTrigger?.Invoke();
+		GBManager.Instance.activeControl = false;
+
+		GBManager.Instance.ObtainParts();
+		StartCoroutine(ClearLevelTransition());
 		
-		gb.Sound.StopMusic();
-		gb.Sound.StopAllSounds();
+		// gb.Sound.StopMusic();
+		// gb.Sound.StopAllSounds();
 		
-		gb.Sound.PlaySound(clearAudio);
+		// gb.Sound.PlaySound(clearAudio);
 	}
 	
 	public IEnumerator ClearLevelTransition()
 	{
+			
 		gb.Sound.StopMusic();
 		gb.Sound.StopAllSounds();
 		
-		gb.Sound.PlaySound(clearAudio);
+		gb.Sound.PlayMusicOneShot(clearAudio);
 		
-		// shouldn't hardcode but oh well
-		while (gb.Sound.IsSoundPlaying())
+		yield return new WaitForSeconds(2f);
+		
+		clearTrigger?.Invoke();
+
+		yield return new WaitWhile (()=>gb.Sound.IsMusicPlaying());
+		
+		if (GBManager.Instance.colorize)
 		{
-			yield return null;
+			GBManager.Instance.gb.Display.UpdateColorPalette(1);
 		}
-		
-		yield return new WaitForSeconds(0.3f);
 		
 		GBManager.Instance.LoadNewScene(SceneManager.GetActiveScene(), "LevelSelect");
 	}
@@ -140,16 +147,16 @@ public class GameplayManager : MonoBehaviour
 		//timer = 1f;
 	}
 	
-	public void Collect(bool battery)
+	public void Collect(bool battery, int ID)
 	{
 		if (battery)
 		{
-			batteriesCollected++;
-			energyMeter += 30;
+			batteriesCollected.Add(ID);
+			energyMeter += 20;
 		}
 		else 
 		{
-			partsCollected++;
+			partsCollected.Add(ID);
 		}
 		
 		
