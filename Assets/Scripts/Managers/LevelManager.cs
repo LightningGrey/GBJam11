@@ -8,12 +8,20 @@ public class LevelManager : MonoBehaviour
 {
 	
 	public GameObject player;
-	//public List<CinemachineVirtualCameraBase> vcams = new List<CinemachineVirtualCameraBase>();
-	
-	//public List<GameObject> batteries = new List<GameObject>();
-	//public List<GameObject> parts = new List<GameObject>();
-	
 	public List<Interactable> items = new List<Interactable>();
+	
+	public List<GameObject> areaManager = new List<GameObject>();
+	
+	
+	void OnEnable()
+	{
+		ScreenTransition.enterTrigger += LoadArea;
+	}
+	
+	void OnDisable()
+	{
+		ScreenTransition.enterTrigger -= LoadArea;
+	}
 	
 	
 	// Start is called before the first frame update
@@ -23,6 +31,11 @@ public class LevelManager : MonoBehaviour
 		//we're hardcoding cause rip
 		if (GBManager.Instance.currentLevel == 0)
 		{
+			// if (GBManager.Instance.colorize)
+			// {
+			// 	GBManager.Instance.gb.Display.UpdateColorPalette(1);
+			// }
+			
 			if (items.Count > 0)
 			{
 				for (int i = items.Count-1; i >= 0; i--)
@@ -98,10 +111,18 @@ public class LevelManager : MonoBehaviour
 	}
 	
 	
-
-	// Update is called once per frame
-	void Update()
+	void LoadArea(int areaID)
 	{
+		areaManager[areaID].SetActive(true);
+		
+		for (int i = 0; i < areaManager.Count; i++)
+		{
+			if (i != areaID)
+			{
+				areaManager[i].SetActive(false);
+			}
+		}
+		
 		
 	}
 }

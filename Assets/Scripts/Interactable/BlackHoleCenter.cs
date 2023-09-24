@@ -8,7 +8,7 @@ public class BlackHoleCenter : MonoBehaviour
 	{
 		if (other.CompareTag("Player"))
 		{
-			GameplayManager.Instance.OnDeath();
+			StartCoroutine(GameplayManager.Instance.OnDeath());
 		}
 		
 	}

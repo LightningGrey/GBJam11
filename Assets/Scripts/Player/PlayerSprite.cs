@@ -82,13 +82,13 @@ public class PlayerSprite : MonoBehaviour
 	
 	public void UpdateDeathSprite()
 	{
-		animationController.updateMode = AnimatorUpdateMode.UnscaledTime;
+		//animationController.updateMode = AnimatorUpdateMode.UnscaledTime;
 		animationController.Play("Death");
 	}
 	public void DeathAnimationFinish()
 	{
-		animationController.updateMode = AnimatorUpdateMode.Normal;
-	 	GBManager.Instance.ReloadScene();
+		//animationController.updateMode = AnimatorUpdateMode.Normal;
+	 	//GBManager.Instance.ReloadScene();
 	}
 	
 	public void ClearAnimation()

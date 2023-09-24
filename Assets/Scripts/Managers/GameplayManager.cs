@@ -19,7 +19,7 @@ public class GameplayManager : MonoBehaviour
 	
 	public AudioClip levelMusic;
 	public AudioClip clearAudio;
-	
+	public AudioClip deathAudio;
 	
 	public static event UnityAction deathTrigger;
 	public static event UnityAction clearTrigger;
@@ -75,7 +75,7 @@ public class GameplayManager : MonoBehaviour
 		{
 			if (energyMeter <= 0f)
 			{
-				OnDeath();
+				StartCoroutine(OnDeath());
 			}
 			else
 			{
@@ -97,15 +97,19 @@ public class GameplayManager : MonoBehaviour
 
 	}
 	
-	public void OnDeath()
+	public IEnumerator OnDeath()
 	{
-		Time.timeScale = 0f;
+		//Time.timeScale = 0f;
 		GBManager.Instance.activeControl = false;				
 				
 		deathTrigger?.Invoke();
 		gb.Sound.StopMusic();
+		gb.Sound.PlayMusicOneShot(deathAudio);
+		
+		yield return new WaitWhile (()=>gb.Sound.IsMusicPlaying());
+		GBManager.Instance.ReloadScene();
 				
-		Time.timeScale = 1;
+		//Time.timeScale = 1;
 	}
 	
 	public void ClearLevel()

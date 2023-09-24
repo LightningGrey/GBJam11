@@ -3,13 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using GBTemplate;
 using Cinemachine;
+using UnityEngine.Events;
 
 public class ScreenTransition : MonoBehaviour
 {
+
 	private GBConsoleController gb;
 	private GameObject player;
 	public CinemachineVirtualCameraBase vcam;
 	public Transform spawnPosition;
+	
+	
+	// load area from manager
+	public int areaID;
+	public static event UnityAction<int> enterTrigger;
+
 	
 	// Start is called before the first frame update
 	void Start()
@@ -29,6 +37,7 @@ public class ScreenTransition : MonoBehaviour
 		if (other.CompareTag("Player"))
 		{
 			GBManager.Instance.activeControl = false;
+			enterTrigger?.Invoke(areaID);
 			StartCoroutine(LoadNewArea());
 		}
 	}
