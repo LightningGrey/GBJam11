@@ -27,12 +27,12 @@ public class GBManager : MonoBehaviour
 	public List<int> batteriesCollectedlv1 = new List<int>();
 	public int batterieslv1 = 3;
 	public List<int> partsCollectedlv1 = new List<int>();
-	public int partslv1 = 5;
+	public int partslv1 = 4;
 	
 	public List<int> batteriesCollectedlv2 = new List<int>();
-	public int batterieslv2 = 3;
+	public int batterieslv2 = 2;
 	public List<int> partsCollectedlv2 = new List<int>();
-	public int partslv2 = 5;
+	public int partslv2 = 4;
 	
 	
 	void Awake()

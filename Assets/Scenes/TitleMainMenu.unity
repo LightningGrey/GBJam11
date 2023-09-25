@@ -2856,7 +2856,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game Jam
+  m_text: Astray in the Stars
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 66d09c0ac789a804d8de417a7158a9e1, type: 2}
   m_sharedMaterial: {fileID: -2881342553489896713, guid: 66d09c0ac789a804d8de417a7158a9e1, type: 2}

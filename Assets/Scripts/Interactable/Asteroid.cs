@@ -50,9 +50,12 @@ public class Asteroid : MonoBehaviour
 	}
 	
 	public void OnDisable()
-	{
-		movementTween.Kill();
-		transform.position = originalLocation;
+	{	
+		if (type != AsteroidType.STATIC)
+		{
+			movementTween.Kill();
+			transform.position = originalLocation;
+		}
 	}
 	
 	void XMovement()

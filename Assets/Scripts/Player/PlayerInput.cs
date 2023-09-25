@@ -38,7 +38,7 @@ public class PlayerInput : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (GBManager.Instance.activeControl && !player.hitstun)
+		if (GBManager.Instance.activeControl && !player.hitstun && !UIManager.Instance.paused)
 		{
 
 			//movement code
@@ -61,12 +61,12 @@ public class PlayerInput : MonoBehaviour
 			direction = direction.normalized;
 
 
-			if (gb.Input.ButtonA)
+			if (gb.Input.ButtonAJustPressed)
 			{
 				interact?.Invoke();
 			}
 
-			if (gb.Input.ButtonB)
+			if (gb.Input.ButtonBJustPressed)
 			{
 				speedScale = 2f;
 				GameplayManager.Instance.ChangeSpeed(3f);
@@ -78,9 +78,11 @@ public class PlayerInput : MonoBehaviour
 			}
 
 
-			if (gb.Input.ButtonStart)
+			if (gb.Input.ButtonStartJustPressed)
 			{
-				//direction.x += 1f;
+			
+				UIManager.Instance.PauseMenu();
+		
 			}
 
 

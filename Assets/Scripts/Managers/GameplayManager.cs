@@ -71,7 +71,7 @@ public class GameplayManager : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (GBManager.Instance.activeControl)
+		if (GBManager.Instance.activeControl && !UIManager.Instance.paused)
 		{
 			if (energyMeter <= 0f)
 			{
