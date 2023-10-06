@@ -276,7 +276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &84295771
 Transform:
   m_ObjectHideFlags: 0
@@ -954,6 +954,11 @@ MonoBehaviour:
   - {fileID: 987323111}
   - {fileID: 1466220061}
   - {fileID: 1261099648}
+  cameraManager:
+  - {fileID: 1744597841}
+  - {fileID: 901977561}
+  - {fileID: 1674655836}
+  - {fileID: 1975791002}
 --- !u!1001 &229866292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4007,7 +4012,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 1
+  m_Priority: 0
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 1897937033}
@@ -4796,7 +4801,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.86, y: -1.21}
+  m_Offset: {x: 0.86, y: -0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7408,7 +7413,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 1
+  m_Priority: 0
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 1897937033}
@@ -9120,7 +9125,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 1
+  m_Priority: 0
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 1897937033}
@@ -9288,7 +9293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2018344032
 Transform:
   m_ObjectHideFlags: 0

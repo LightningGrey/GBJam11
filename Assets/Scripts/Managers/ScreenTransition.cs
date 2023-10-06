@@ -10,14 +10,14 @@ public class ScreenTransition : MonoBehaviour
 
 	private GBConsoleController gb;
 	private GameObject player;
-	public CinemachineVirtualCameraBase vcam;
+	//public CinemachineVirtualCameraBase vcam;
 	public Transform spawnPosition;
 	
 	
 	// load area from manager
 	public int currentAreaID;
 	public int nextAreaID;
-	public static event UnityAction<int> enterTrigger;
+	public static event UnityAction<int, int> enterTrigger;
 	public static event UnityAction<int> unloadTrigger;
 
 	
@@ -39,21 +39,23 @@ public class ScreenTransition : MonoBehaviour
 		if (other.CompareTag("Player"))
 		{
 			GBManager.Instance.activeControl = false;
-			enterTrigger?.Invoke(nextAreaID);
 			StartCoroutine(LoadNewArea());
 		}
 	}
 	
+	// change camera to number priority or make new camera manager
 	public IEnumerator LoadNewArea()
 	{
 		yield return gb.Display.StartCoroutine(gb.Display.FadeToWhite(1f));
 
-		vcam.MoveToTopOfPrioritySubqueue();
+		//vcam.MoveToTopOfPrioritySubqueue();
+		enterTrigger?.Invoke(nextAreaID, currentAreaID);
 		player.transform.position = spawnPosition.position;
 	
 		yield return gb.Display.StartCoroutine(gb.Display.FadeFromWhite(2f));
 		
 		unloadTrigger?.Invoke(currentAreaID);
+		
 		
 		GBManager.Instance.activeControl = true;
 	}

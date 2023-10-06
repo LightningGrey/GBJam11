@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
 	public List<Interactable> items = new List<Interactable>();
 	
 	public List<GameObject> areaManager = new List<GameObject>();
+	public List<CinemachineVirtualCameraBase> cameraManager = new List<CinemachineVirtualCameraBase>();
 	
 	
 	void OnEnable()
@@ -109,13 +110,27 @@ public class LevelManager : MonoBehaviour
 			
 		}
 		
+		for (int i = 0; i < cameraManager.Count; i++)
+		{
+			if (i != 0)
+			{
+				cameraManager[i].Priority = 0;
+			}
+			else
+			{
+				cameraManager[i].Priority = 1;
+			}
+		}
 		
 	}
 	
 	
-	void LoadArea(int areaID)
+	void LoadArea(int areaID, int oldAreaID)
 	{
 		areaManager[areaID].SetActive(true);
+		
+		cameraManager[areaID].Priority = 1;
+		cameraManager[oldAreaID].Priority = 0;
 			
 	}
 	
