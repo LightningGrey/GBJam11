@@ -18,8 +18,6 @@ public class Interactable : MonoBehaviour
 	
 	public InteractableType type;
 	
-	public string text = "";
-	
 	
 	// void Interact() 
 	// {}

@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
 	private string partGet = "Shuttle part obtained!";
 	
 	private Tweener movementTween;
+	private Coroutine textCoroutine;
 	
 	
 	void Awake()
@@ -75,11 +76,26 @@ public class UIManager : MonoBehaviour
 	
 	
 	
-	public IEnumerator UICollectText(bool battery)
+	
+	public void UICollectText(bool battery)
 	{
+		if (textCoroutine != null)
+		{
+			StopCoroutine(textCoroutine);
+		}
+		
 		itemGetText.text = battery ? batteryGet : partGet;
 		
-		yield return new WaitForSeconds(1f);
+		textCoroutine = StartCoroutine(UICollectTextRoutine());
+		
+		
+	}
+	
+	public IEnumerator UICollectTextRoutine()
+	{
+		//itemGetText.text = battery ? batteryGet : partGet;
+		
+		yield return new WaitForSecondsRealtime(1f);
 		
 		itemGetText.text = "";
 	}
@@ -135,10 +151,19 @@ public class UIManager : MonoBehaviour
 	
 	public void CloseMenu()
 	{
-		paused = false;
 		movementTween = transform.DOLocalMoveY(128f, 2).SetUpdate(true).SetEase(Ease.Linear)
-			.OnComplete(() => options.SetActive(false)).OnComplete(() => Time.timeScale = 1);
-			
+			.OnComplete(() => options.SetActive(false)).OnComplete(() => CloseMenuComplete());
+	}
+	
+	public void CloseMenuComplete()
+	{
+		Time.timeScale = 1;
+		paused = false;
+	}
+	
+	public void Read()
+	{
+		
 	}
 	
 	

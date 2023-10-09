@@ -15,7 +15,11 @@ public class Player : MonoBehaviour
 	public bool hitstun;
 	public bool iframes = false;
 	public float hitstunTimer = 0.4f;
-	public Coroutine currentCoroutine;
+	
+	public Coroutine flashCoroutine;
+	
+	public Coroutine textCoroutine;
+	
 	public Interactable currentInteractable;
 	
 	
@@ -71,6 +75,7 @@ public class Player : MonoBehaviour
 		if (other.CompareTag("Interactable") && !iframes)
 		{
 			currentInteractable = other.gameObject.GetComponent<Interactable>();
+			Debug.Log(currentInteractable);
 		}
 		
 	}
@@ -96,7 +101,7 @@ public class Player : MonoBehaviour
 			var direction = (other.transform.position - gameObject.transform.position).normalized;
 			gameObject.transform.position -= direction * asteroidClass.knockbackDist;
 			
-			currentCoroutine = StartCoroutine(SpriteFlash());
+			flashCoroutine = StartCoroutine(SpriteFlash());
 		}
 	
 	}
@@ -128,9 +133,9 @@ public class Player : MonoBehaviour
 
 	public void CloseFlash()
 	{
-		if (currentCoroutine != null)
+		if (flashCoroutine != null)
 		{
-			StopCoroutine(currentCoroutine);
+			StopCoroutine(flashCoroutine);
 		}
 	}
 	
@@ -145,19 +150,24 @@ public class Player : MonoBehaviour
 				{
 					GameplayManager.Instance.Collect(true, currentInteractable.objectID);
 					currentInteractable.gameObject.SetActive(false);
-					StartCoroutine(UIManager.Instance.UICollectText(true));
+					
+					UIManager.Instance.UICollectText(true);
+					
+					
 					break;
 				}
 				case InteractableType.PART:
 				{
 					GameplayManager.Instance.Collect(false, currentInteractable.objectID);
 					currentInteractable.gameObject.SetActive(false);
-					StartCoroutine(UIManager.Instance.UICollectText(false));
+					
+					UIManager.Instance.UICollectText(false);
+					
 					break;
 				}
 				case InteractableType.READABLE:
 				{
-					//GameplayManager.Instance.Collect(true);
+					UIManager.Instance.Read();
 					break;
 				}
 				case InteractableType.SHUTTLE:
