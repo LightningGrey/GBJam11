@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
 		if (other.CompareTag("Interactable") && !iframes)
 		{
 			currentInteractable = other.gameObject.GetComponent<Interactable>();
-			Debug.Log(currentInteractable);
+			//Debug.Log(currentInteractable);
 		}
 		
 	}
@@ -167,7 +167,7 @@ public class Player : MonoBehaviour
 				}
 				case InteractableType.READABLE:
 				{
-					UIManager.Instance.Read();
+					UIManager.Instance.Read(currentInteractable.interactString);
 					break;
 				}
 				case InteractableType.SHUTTLE:

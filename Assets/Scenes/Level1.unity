@@ -2847,10 +2847,11 @@ GameObject:
   m_Component:
   - component: {fileID: 639651297}
   - component: {fileID: 639651298}
+  - component: {fileID: 639651300}
   - component: {fileID: 639651299}
   m_Layer: 0
   m_Name: Satellite
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2931,12 +2932,63 @@ MonoBehaviour:
   m_GameObject: {fileID: 639651296}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e027ed5085972b2458dfdd1f0f5c57fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f02625684a9b2047bffedc54ded958c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objectID: 0
   type: 2
-  interactString: 
+  interactString:
+  - 'Day 14: I am still wandering'
+  - space with no end in sight...
+  - I've left this satellite for
+  - someone to find, since other
+  - 'people have too. Though I don''t '
+  - know if they were saved...
+--- !u!61 &639651300
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639651296}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.15, y: 0.15}
+  m_EdgeRadius: 0
 --- !u!1 &660620504
 GameObject:
   m_ObjectHideFlags: 3
@@ -3821,6 +3873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectID: -1
   type: 3
+  interactString: []
   clearSound: {fileID: 8300000, guid: 5f5d7640325416148bab2d0589a10bbf, type: 3}
 --- !u!1 &850734255
 GameObject:
@@ -4867,7 +4920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02c0d7cae0f1af14295bf853dd51933e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemGetText: {fileID: 1610157333}
+  textboxText: {fileID: 1610157333}
   options: {fileID: 42220613}
   arrow: {fileID: 901345822}
   selectSFX: {fileID: 8300000, guid: 22585b57bc444d24c98c58e14cec8d2c, type: 3}
@@ -6517,7 +6570,7 @@ GameObject:
   - component: {fileID: 1342375709}
   m_Layer: 0
   m_Name: Satellite (3)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6680,7 +6733,7 @@ GameObject:
   - component: {fileID: 1363152301}
   m_Layer: 0
   m_Name: Satellite (1)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7691,7 +7744,7 @@ GameObject:
   - component: {fileID: 1610157334}
   - component: {fileID: 1610157333}
   m_Layer: 5
-  m_Name: ItemGetText
+  m_Name: TextboxText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7774,7 +7827,7 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
-  m_wordSpacing: 0
+  m_wordSpacing: -30
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0

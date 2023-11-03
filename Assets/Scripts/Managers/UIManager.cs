@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
 	
 	public static UIManager Instance { get; set; }
 	
-	public TextMeshProUGUI itemGetText;
+	public TextMeshProUGUI textboxText;
 	public GameObject options;
 	public GameObject arrow;
 	public AudioClip selectSFX;
@@ -18,12 +18,15 @@ public class UIManager : MonoBehaviour
 	
 	public TextMeshProUGUI partsText;
 	
+	
+	
 	public bool paused = false;
 	public int selectionIndex = 0;
 	
 	// text
 	private string batteryGet = "Battery obtained!";
 	private string partGet = "Shuttle part obtained!";
+
 	
 	private Tweener movementTween;
 	private Coroutine textCoroutine;
@@ -46,30 +49,33 @@ public class UIManager : MonoBehaviour
 	{
 		
 		if (paused)
-		 {
-		// 	if (GBManager.Instance.gb.Input.DownJustPressed && selectionIndex == 0)
-		// 	{
-		// 		selectionIndex++;
-		// 		arrow.transform.localPosition -= new Vector3(0f, 27f);
-		// 	}
-		// 	else if (GBManager.Instance.gb.Input.UpJustPressed && selectionIndex == 1)
-		// 	{
-		// 		selectionIndex--;
-		// 		arrow.transform.localPosition += new Vector3(0f, 27f);
-		// 	}
-			
-			if (GBManager.Instance.gb.Input.ButtonStartJustPressed)
+		{
+			if (options.activeSelf)
 			{
-				GBManager.Instance.gb.Sound.PlaySound(selectSFX);
-				//if (selectionIndex == 1)
-				//{
-				//	ExitLevel();
-				//}
-				//else 
-				//{
-					CloseMenu();
-				//}
-			}
+				if (GBManager.Instance.gb.Input.DownJustPressed && selectionIndex == 0)
+				{
+					selectionIndex++;
+					arrow.transform.localPosition -= new Vector3(0f, 27f);
+				}
+				else if (GBManager.Instance.gb.Input.UpJustPressed && selectionIndex == 1)
+				{
+					selectionIndex--;
+					arrow.transform.localPosition += new Vector3(0f, 27f);
+				}
+				
+				if (GBManager.Instance.gb.Input.ButtonStartJustPressed)
+				{
+					GBManager.Instance.gb.Sound.PlaySound(selectSFX);
+					if (selectionIndex == 1)
+					{
+						ExitLevel();
+					}
+					else 
+					{
+						CloseMenu();
+					}
+				}	
+			}		
 			
 		}
 	}
@@ -84,7 +90,7 @@ public class UIManager : MonoBehaviour
 			StopCoroutine(textCoroutine);
 		}
 		
-		itemGetText.text = battery ? batteryGet : partGet;
+		textboxText.text = battery ? batteryGet : partGet;
 		
 		textCoroutine = StartCoroutine(UICollectTextRoutine());
 		
@@ -97,7 +103,7 @@ public class UIManager : MonoBehaviour
 		
 		yield return new WaitForSecondsRealtime(1f);
 		
-		itemGetText.text = "";
+		textboxText.text = "";
 	}
 	
 	
@@ -161,12 +167,34 @@ public class UIManager : MonoBehaviour
 		paused = false;
 	}
 	
-	public void Read()
+	public void Read(List<string> interactString)
 	{
-		
+		StartCoroutine(ReadCoroutine(interactString));
 	}
 	
-	
+	public IEnumerator ReadCoroutine(List<string> interactString)
+	{
+		paused = true;
+		
+		for (int i = 0; i < interactString.Count; i++)
+		{
+			textboxText.maxVisibleCharacters = 0;
+			textboxText.text = interactString[i];
+
+			foreach (char letter in textboxText.text)
+			{
+				textboxText.maxVisibleCharacters++;
+				yield return new WaitForSeconds(0.03f);
+			}
+
+			yield return new WaitUntil(() => GBManager.Instance.gb.Input.ButtonAJustPressed);
+		}
+		
+		paused = false;
+		textboxText.text = "";
+	}
+
+
 	public void ExitLevel()
 	{
 		

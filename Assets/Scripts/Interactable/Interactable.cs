@@ -11,6 +11,7 @@ public enum InteractableType
 }
 
 
+//string
 public class Interactable : MonoBehaviour
 {
 	
@@ -18,8 +19,6 @@ public class Interactable : MonoBehaviour
 	
 	public InteractableType type;
 	
-	
-	// void Interact() 
-	// {}
+	public List<string> interactString = new List<string>();
 
 }
