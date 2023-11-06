@@ -54,7 +54,7 @@ public class Asteroid : MonoBehaviour
 		if (type != AsteroidType.STATIC)
 		{
 			movementTween.Kill();
-			transform.position = originalLocation;
+			transform.localPosition = originalLocation;
 		}
 	}
 	
