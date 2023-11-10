@@ -102,8 +102,7 @@ public class PlayerInput : MonoBehaviour
 
 	void FixedUpdate() 
 	{
-		rb.velocity = new Vector2(direction.x, direction.y) * speed * 
-			speedScale * Time.fixedDeltaTime;
+		rb.velocity = speed * speedScale * Time.fixedDeltaTime * new Vector2(direction.x, direction.y);
 		
 		// var velocity = rb.velocity;
 		// 
@@ -111,8 +110,14 @@ public class PlayerInput : MonoBehaviour
 		// ref velocity, 1f));
 		
 		//rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVel, ref refVel, smoothVal);
-
+		
+		
+		//transform.position = new Vector2(Mathf.Round(transform.position.x * 100f)/100f, Mathf.Round(transform.position.y * 100f)/100f);
+		
+		
 		direction = Vector2.zero;
+		
+		
 	}
 
 	
