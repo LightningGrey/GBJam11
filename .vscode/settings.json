@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "GBJAM-11.sln"
+    "dotnet.defaultSolution": "GBJAM-11.sln",
+    "FSharp.suggestGitignore": false
 }

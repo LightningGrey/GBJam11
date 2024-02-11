@@ -17,8 +17,8 @@ public class ScreenTransition : MonoBehaviour
 	// load area from manager
 	public int currentAreaID;
 	public int nextAreaID;
-	public static event UnityAction<int, int> enterTrigger;
-	public static event UnityAction<int> unloadTrigger;
+	public static event UnityAction<int, int> EnterTrigger;
+	public static event UnityAction<int> UnloadTrigger;
 
 	
 	// Start is called before the first frame update
@@ -49,12 +49,12 @@ public class ScreenTransition : MonoBehaviour
 		yield return gb.Display.StartCoroutine(gb.Display.FadeToWhite(1f));
 
 		//vcam.MoveToTopOfPrioritySubqueue();
-		enterTrigger?.Invoke(nextAreaID, currentAreaID);
+		EnterTrigger?.Invoke(nextAreaID, currentAreaID);
 		player.transform.position = spawnPosition.position;
 	
 		yield return gb.Display.StartCoroutine(gb.Display.FadeFromWhite(2f));
 		
-		unloadTrigger?.Invoke(currentAreaID);
+		UnloadTrigger?.Invoke(currentAreaID);
 		
 		
 		GBManager.Instance.activeControl = true;

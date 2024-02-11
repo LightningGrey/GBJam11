@@ -16,14 +16,14 @@ public class LevelManager : MonoBehaviour
 	
 	void OnEnable()
 	{
-		ScreenTransition.enterTrigger += LoadArea;
-		ScreenTransition.unloadTrigger += UnloadArea;
+		ScreenTransition.EnterTrigger += LoadArea;
+		ScreenTransition.UnloadTrigger += UnloadArea;
 	}
 	
 	void OnDisable()
 	{
-		ScreenTransition.enterTrigger -= LoadArea;
-		ScreenTransition.unloadTrigger -= UnloadArea;
+		ScreenTransition.EnterTrigger -= LoadArea;
+		ScreenTransition.UnloadTrigger -= UnloadArea;
 	}
 	
 	
@@ -129,9 +129,8 @@ public class LevelManager : MonoBehaviour
 	{
 		areaManager[areaID].SetActive(true);
 		
-		cameraManager[areaID].Priority = 1;
 		cameraManager[oldAreaID].Priority = 0;
-			
+		cameraManager[areaID].Priority = 1;	
 	}
 	
 	void UnloadArea(int areaID)
