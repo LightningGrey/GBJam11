@@ -56,8 +56,9 @@ public class ScreenTransition : MonoBehaviour
 		
 		UnloadTrigger?.Invoke(currentAreaID);
 		
-		
 		GBManager.Instance.activeControl = true;
+		
+		//GBManager.Instance.activeControl = true;
 	}
 	
 }
