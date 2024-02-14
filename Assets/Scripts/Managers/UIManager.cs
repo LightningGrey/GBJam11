@@ -101,7 +101,7 @@ public class UIManager : MonoBehaviour
 	{
 		//itemGetText.text = battery ? batteryGet : partGet;
 		
-		yield return new WaitForSecondsRealtime(1f);
+		yield return new WaitForSecondsRealtime(2f);
 		
 		textboxText.text = "";
 	}

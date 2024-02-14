@@ -1045,6 +1045,7 @@ MonoBehaviour:
   - {fileID: 1293888606}
   - {fileID: 1518973321}
   - {fileID: 514806603}
+  - {fileID: 1731515873}
   areaManager:
   - {fileID: 1018151509}
   - {fileID: 987323111}
@@ -2476,6 +2477,10 @@ PrefabInstance:
     - target: {fileID: 3644654695613861922, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
       propertyPath: m_Name
       value: Part
+      objectReference: {fileID: 0}
+    - target: {fileID: 3644654695613861922, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6652976565203074670, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4986,6 +4991,10 @@ PrefabInstance:
     - target: {fileID: 3644654695613861922, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
       propertyPath: m_Name
       value: Part
+      objectReference: {fileID: 0}
+    - target: {fileID: 3644654695613861922, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6652976565203074670, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7985,6 +7994,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Part
       objectReference: {fileID: 0}
+    - target: {fileID: 3644654695613861922, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6652976565203074670, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.7451954
@@ -8472,7 +8485,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 3
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -8490,7 +8503,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 77.08819, y: 0, z: 0, w: 41.705208}
+  m_margin: {x: 77.08819, y: 0, z: 0, w: 34.524822}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -9239,11 +9252,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2811754694529182085, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
       propertyPath: objectID
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3644654695613861922, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
       propertyPath: m_Name
       value: Part
+      objectReference: {fileID: 0}
+    - target: {fileID: 3644654695613861922, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6652976565203074670, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9295,6 +9312,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6652976565203074670, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
   m_PrefabInstance: {fileID: 1731515871}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1731515873 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2811754694529182085, guid: 80fe58aa718157246b5d2c6122c68526, type: 3}
+  m_PrefabInstance: {fileID: 1731515871}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f02625684a9b2047bffedc54ded958c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1734907590
 GameObject:
   m_ObjectHideFlags: 0
