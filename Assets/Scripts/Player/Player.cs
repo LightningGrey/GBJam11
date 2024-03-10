@@ -28,11 +28,16 @@ public class Player : MonoBehaviour
 	{
 		GameplayManager.deathTrigger += CloseFlash;
 		PlayerInput.interact += OnInteract;
+		ScreenTransition.TransitionIntoTrigger += DisablePlayer;
+		ScreenTransition.TransitionFromTrigger += EnablePlayer;
 	}
+	
 	private void OnDisable()
 	{
 		GameplayManager.deathTrigger -= CloseFlash;
 		PlayerInput.interact -= OnInteract;
+		ScreenTransition.TransitionIntoTrigger -= DisablePlayer;
+		ScreenTransition.TransitionFromTrigger -= EnablePlayer;
 	}
 
 	// Update is called once per frame
@@ -137,6 +142,17 @@ public class Player : MonoBehaviour
 		{
 			StopCoroutine(flashCoroutine);
 		}
+	}
+	
+	public void EnablePlayer(Transform transformParam)
+	{
+		transform.position = transformParam.position;
+		rb.isKinematic = false;
+	}
+	
+	public void DisablePlayer()
+	{
+		rb.isKinematic = true;
 	}
 	
 	

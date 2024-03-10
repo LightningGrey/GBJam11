@@ -94,7 +94,6 @@ public class UIManager : MonoBehaviour
 		
 		textCoroutine = StartCoroutine(UICollectTextRoutine());
 		
-		
 	}
 	
 	public IEnumerator UICollectTextRoutine()
@@ -130,13 +129,13 @@ public class UIManager : MonoBehaviour
 		
 		if (GBManager.Instance.currentLevel == 0)
 		{
-			batteryText.text = GBManager.Instance.batteriesCollectedlv1.Count + "/" + GBManager.Instance.batterieslv1;
-			partsText.text = GBManager.Instance.partsCollectedlv1.Count + "/" + GBManager.Instance.partslv1;
+			batteryText.text = GameplayManager.Instance.batteriesCollected + "/" + GBManager.Instance.batterieslv1;
+			partsText.text = GameplayManager.Instance.partsCollected + "/" + GBManager.Instance.partslv1;
 		}
 		else
 		{
-			batteryText.text = GBManager.Instance.batteriesCollectedlv2.Count + "/" + GBManager.Instance.batterieslv2;
-			partsText.text = GBManager.Instance.partsCollectedlv2.Count + "/" + GBManager.Instance.partslv2;
+			batteryText.text = GameplayManager.Instance.batteriesCollected + "/" + GBManager.Instance.batterieslv2;
+			partsText.text = GameplayManager.Instance.partsCollected + "/" + GBManager.Instance.partslv2;
 		}
 
 		
@@ -169,6 +168,10 @@ public class UIManager : MonoBehaviour
 	
 	public void Read(List<string> interactString)
 	{
+		if (textCoroutine != null)
+		{
+			StopCoroutine(textCoroutine);
+		}
 		StartCoroutine(ReadCoroutine(interactString));
 	}
 	

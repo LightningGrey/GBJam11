@@ -9,7 +9,8 @@ public class ScreenTransition : MonoBehaviour
 {
 
 	private GBConsoleController gb;
-	private GameObject player;
+	private Player player;
+	private BoxCollider2D playerHitbox;
 	//public CinemachineVirtualCameraBase vcam;
 	public Transform spawnPosition;
 	
@@ -17,6 +18,11 @@ public class ScreenTransition : MonoBehaviour
 	// load area from manager
 	public int currentAreaID;
 	public int nextAreaID;
+	
+	
+	public static event UnityAction TransitionIntoTrigger;
+	public static event UnityAction<Transform> TransitionFromTrigger;
+	
 	public static event UnityAction<int, int> EnterTrigger;
 	public static event UnityAction<int> UnloadTrigger;
 
@@ -25,7 +31,7 @@ public class ScreenTransition : MonoBehaviour
 	void Start()
 	{
 		gb = GBConsoleController.GetInstance();
-		player = GameObject.FindGameObjectWithTag("Player");
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 	}
 
 	// Update is called once per frame
@@ -39,6 +45,7 @@ public class ScreenTransition : MonoBehaviour
 		if (other.CompareTag("Player"))
 		{
 			GBManager.Instance.activeControl = false;
+			TransitionIntoTrigger?.Invoke();
 			StartCoroutine(LoadNewArea());
 		}
 	}
@@ -50,7 +57,8 @@ public class ScreenTransition : MonoBehaviour
 
 		//vcam.MoveToTopOfPrioritySubqueue();
 		EnterTrigger?.Invoke(nextAreaID, currentAreaID);
-		player.transform.position = spawnPosition.position;
+		TransitionFromTrigger?.Invoke(spawnPosition);
+		
 	
 		yield return gb.Display.StartCoroutine(gb.Display.FadeFromWhite(2f));
 		
