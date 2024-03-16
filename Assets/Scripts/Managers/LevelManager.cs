@@ -49,6 +49,7 @@ public class LevelManager : MonoBehaviour
 						if (items[i].type == InteractableType.BATTERY &&
 						GBManager.Instance.batteriesCollectedlv1.Contains(items[i].objectID))
 						{
+							GameplayManager.Instance.batteriesCollected.Add(-1);
 							items[i].gameObject.SetActive(false);
 							items.RemoveAt(i);
 						}
@@ -59,6 +60,7 @@ public class LevelManager : MonoBehaviour
 						if (items[i].type == InteractableType.PART &&
 						GBManager.Instance.partsCollectedlv1.Contains(items[i].objectID))
 						{
+							GameplayManager.Instance.batteriesCollected.Add(-1);
 							items[i].gameObject.SetActive(false);
 							items.RemoveAt(i);
 						}
@@ -89,6 +91,7 @@ public class LevelManager : MonoBehaviour
 						if (items[i].type == InteractableType.BATTERY &&
 						GBManager.Instance.batteriesCollectedlv2.Contains(items[i].objectID))
 						{
+							GameplayManager.Instance.batteriesCollected.Add(-1);
 							items[i].gameObject.SetActive(false);
 							items.RemoveAt(i);
 						}
@@ -99,6 +102,7 @@ public class LevelManager : MonoBehaviour
 						if (items[i].type == InteractableType.PART &&
 						GBManager.Instance.partsCollectedlv2.Contains(items[i].objectID))
 						{
+							GameplayManager.Instance.batteriesCollected.Add(-1);
 							items[i].gameObject.SetActive(false);
 							items.RemoveAt(i);
 						}

@@ -57,5 +57,6 @@
         "Temp/": true
     },
     "dotnet.defaultSolution": "GBJAM-11.sln",
-    "FSharp.suggestGitignore": false
+    "FSharp.suggestGitignore": false,
+    "todo-tree.tree.scanMode": "workspace"
 }

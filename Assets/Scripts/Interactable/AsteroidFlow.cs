@@ -28,16 +28,16 @@ public class AsteroidFlow : MonoBehaviour
 	// 	}
 		
 	// }
+	
 	void Start()
 	{
 		player = GameObject.FindWithTag("Player");
 	}
-	
-	
-	
+
+
 	private void FixedUpdate() 
 	{
-		if (activeFlow && GBManager.Instance.activeControl)
+		if (activeFlow && GBManager.Instance.activeControl && !UIManager.Instance.paused)
 		{
 			player.transform.position -= new Vector3(xFlow, yFlow);	
 		}

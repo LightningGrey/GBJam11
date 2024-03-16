@@ -129,13 +129,13 @@ public class UIManager : MonoBehaviour
 		
 		if (GBManager.Instance.currentLevel == 0)
 		{
-			batteryText.text = GameplayManager.Instance.batteriesCollected + "/" + GBManager.Instance.batterieslv1;
-			partsText.text = GameplayManager.Instance.partsCollected + "/" + GBManager.Instance.partslv1;
+			batteryText.text = GameplayManager.Instance.batteriesCollected.Count + "/" + GBManager.Instance.batterieslv1;
+			partsText.text = GameplayManager.Instance.partsCollected.Count + "/" + GBManager.Instance.partslv1;
 		}
 		else
 		{
-			batteryText.text = GameplayManager.Instance.batteriesCollected + "/" + GBManager.Instance.batterieslv2;
-			partsText.text = GameplayManager.Instance.partsCollected + "/" + GBManager.Instance.partslv2;
+			batteryText.text = GameplayManager.Instance.batteriesCollected.Count + "/" + GBManager.Instance.batterieslv2;
+			partsText.text = GameplayManager.Instance.partsCollected.Count + "/" + GBManager.Instance.partslv2;
 		}
 
 		
@@ -156,14 +156,14 @@ public class UIManager : MonoBehaviour
 	
 	public void CloseMenu()
 	{
-		movementTween = transform.DOLocalMoveY(128f, 2).SetUpdate(true).SetEase(Ease.Linear)
-			.OnComplete(() => options.SetActive(false)).OnComplete(() => CloseMenuComplete());
+		movementTween = transform.DOLocalMoveY(128f, 2).SetUpdate(true).SetEase(Ease.Linear).OnComplete(() => CloseMenuComplete());
 	}
 	
 	public void CloseMenuComplete()
 	{
 		Time.timeScale = 1;
 		paused = false;
+		options.SetActive(false);
 	}
 	
 	public void Read(List<string> interactString)
@@ -195,6 +195,7 @@ public class UIManager : MonoBehaviour
 		
 		paused = false;
 		textboxText.text = "";
+		textboxText.maxVisibleCharacters = 50; //random high number for not cutting off visible letters
 	}
 
 
