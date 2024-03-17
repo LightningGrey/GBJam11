@@ -146,6 +146,21 @@ public class GameplayManager : MonoBehaviour
 		
 		GBManager.Instance.LoadNewScene(SceneManager.GetActiveScene(), "LevelSelect");
 	}
+	
+	public void ExitLevel()
+	{
+		GBManager.Instance.activeControl = false;
+
+		GBManager.Instance.ObtainParts();
+		StartCoroutine(ClearLevelTransition());
+		
+		// gb.Sound.StopMusic();
+		// gb.Sound.StopAllSounds();
+		
+		// gb.Sound.PlaySound(clearAudio);
+	}
+	
+	
 
 	public void ChangeSpeed(float speed)
 	{

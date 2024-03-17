@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using GBTemplate;
 
 public class UIManager : MonoBehaviour
 {
 	
 	public static UIManager Instance { get; set; }
 	
+	[Header("References")]
 	public TextMeshProUGUI textboxText;
 	public GameObject options;
+	public GameObject confirmClose;
+	
+	
 	public GameObject arrow;
 	public AudioClip selectSFX;
 	
@@ -19,9 +24,10 @@ public class UIManager : MonoBehaviour
 	public TextMeshProUGUI partsText;
 	
 	
-	
+	[Header("Variables")]
 	public bool paused = false;
 	public int selectionIndex = 0;
+	private bool startPress = false;
 	
 	// text
 	private string batteryGet = "Battery obtained!";
@@ -30,6 +36,7 @@ public class UIManager : MonoBehaviour
 	
 	private Tweener movementTween;
 	private Coroutine textCoroutine;
+	private Coroutine arrowCoroutine;
 	
 	
 	void Awake()
@@ -55,17 +62,18 @@ public class UIManager : MonoBehaviour
 				if (GBManager.Instance.gb.Input.DownJustPressed && selectionIndex == 0)
 				{
 					selectionIndex++;
-					arrow.transform.localPosition -= new Vector3(0f, 27f);
+					arrow.transform.localPosition -= new Vector3(0f, 15f);
 				}
 				else if (GBManager.Instance.gb.Input.UpJustPressed && selectionIndex == 1)
 				{
 					selectionIndex--;
-					arrow.transform.localPosition += new Vector3(0f, 27f);
+					arrow.transform.localPosition += new Vector3(0f, 15f);
 				}
 				
 				if (GBManager.Instance.gb.Input.ButtonStartJustPressed)
 				{
 					GBManager.Instance.gb.Sound.PlaySound(selectSFX);
+					startPress = true;
 					if (selectionIndex == 1)
 					{
 						ExitLevel();
@@ -113,7 +121,7 @@ public class UIManager : MonoBehaviour
 		GBManager.Instance.activeControl = false;
 		
 		movementTween = transform.DOLocalMoveY(0f, 2).SetUpdate(true).SetEase(Ease.Linear)
-			.OnComplete(() => StartCoroutine(UIFlash()));
+			.OnComplete(() => arrowCoroutine = StartCoroutine(UIFlash()));
 		
 		// options.SetActive(true);
 		// StartCoroutine(UIFlash());
@@ -141,21 +149,21 @@ public class UIManager : MonoBehaviour
 		
 		GBManager.Instance.activeControl = true;
 
-		// do
-		// {
-		// 	arrow.gameObject.SetActive(false);
-		// 	yield return new WaitForSecondsRealtime(0.3f);
+		while (!startPress) // couldn't find a way to do this with input check
+		{
+			yield return new WaitForSecondsRealtime(0.3f);
+			arrow.SetActive(false);
 				
-		// 	arrow.gameObject.SetActive(true);
-		// 	yield return new WaitForSecondsRealtime(0.3f);	
-		// } 
-		// while (!GBManager.Instance.gb.Input.ButtonStartJustPressed);
+			yield return new WaitForSecondsRealtime(0.3f);	
+			arrow.SetActive(true);
+		} 
 
-	
+		arrow.SetActive(false);
 	}
 	
 	public void CloseMenu()
 	{
+		GBManager.Instance.activeControl = false;
 		movementTween = transform.DOLocalMoveY(128f, 2).SetUpdate(true).SetEase(Ease.Linear).OnComplete(() => CloseMenuComplete());
 	}
 	
@@ -163,7 +171,12 @@ public class UIManager : MonoBehaviour
 	{
 		Time.timeScale = 1;
 		paused = false;
+		
+		arrow.SetActive(true);
 		options.SetActive(false);
+		
+		GBManager.Instance.activeControl = true;
+		startPress = false;
 	}
 	
 	public void Read(List<string> interactString)
@@ -201,7 +214,8 @@ public class UIManager : MonoBehaviour
 
 	public void ExitLevel()
 	{
-		
+		options.SetActive(false);
+		confirmClose.SetActive(true);
 	}
 	
 }
