@@ -2297,7 +2297,7 @@ Transform:
   m_GameObject: {fileID: 326276576}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6799998, y: -2.1, z: 0}
+  m_LocalPosition: {x: 0.6799998, y: -1.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6323,6 +6323,88 @@ MonoBehaviour:
   type: 3
   interactString: []
   clearSound: {fileID: 8300000, guid: 5f5d7640325416148bab2d0589a10bbf, type: 3}
+--- !u!1001 &853380660
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1771966544}
+    m_Modifications:
+    - target: {fileID: 2875342480850828195, guid: e6421f2a96e0d5440b110a7cc85b4181, type: 3}
+      propertyPath: m_Name
+      value: SmallAsteroidIced (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394871925812205653, guid: e6421f2a96e0d5440b110a7cc85b4181, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394871925812205653, guid: e6421f2a96e0d5440b110a7cc85b4181, type: 3}
+      propertyPath: duration
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394871925812205653, guid: e6421f2a96e0d5440b110a7cc85b4181, type: 3}
+      propertyPath: endLocation
+      value: -1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394871925812205653, guid: e6421f2a96e0d5440b110a7cc85b4181, type: 3}
+      propertyPath: originalLocation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231694577308872060, guid: e6421f2a96e0d5440b110a7cc85b4181, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 62596753c38c62242b8ceac5597ab200, type: 3}
+    - target: {fileID: 8838926624946119107, guid: e6421f2a96e0d5440b110a7cc85b4181, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838926624946119107, guid: e6421f2a96e0d5440b110a7cc85b4181, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838926624946119107, guid: e6421f2a96e0d5440b110a7cc85b4181, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838926624946119107, guid: e6421f2a96e0d5440b110a7cc85b4181, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838926624946119107, guid: e6421f2a96e0d5440b110a7cc85b4181, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838926624946119107, guid: e6421f2a96e0d5440b110a7cc85b4181, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838926624946119107, guid: e6421f2a96e0d5440b110a7cc85b4181, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838926624946119107, guid: e6421f2a96e0d5440b110a7cc85b4181, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838926624946119107, guid: e6421f2a96e0d5440b110a7cc85b4181, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838926624946119107, guid: e6421f2a96e0d5440b110a7cc85b4181, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e6421f2a96e0d5440b110a7cc85b4181, type: 3}
+--- !u!4 &853380661 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8838926624946119107, guid: e6421f2a96e0d5440b110a7cc85b4181, type: 3}
+  m_PrefabInstance: {fileID: 853380660}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &868945869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7895,7 +7977,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.86, y: -3.97}
+  m_Offset: {x: 0.86, y: -3.75}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7906,7 +7988,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 2.59}
+  m_Size: {x: 0.1, y: 2.86}
   m_EdgeRadius: 0
 --- !u!61 &1056881591
 BoxCollider2D:
@@ -8041,7 +8123,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 2.53}
+  m_Size: {x: 0.1, y: 2.03}
   m_EdgeRadius: 0
 --- !u!61 &1056881594
 BoxCollider2D:
@@ -10824,7 +10906,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1998828143322829329, guid: 4f458cf3bb3d113479645b6727c88287, type: 3}
       propertyPath: interactString.Array.data[0]
-      value: The
+      value: Going against the flow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998828143322829329, guid: 4f458cf3bb3d113479645b6727c88287, type: 3}
+      propertyPath: interactString.Array.data[1]
+      value: hasn't worked ... I'll find
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998828143322829329, guid: 4f458cf3bb3d113479645b6727c88287, type: 3}
+      propertyPath: interactString.Array.data[2]
+      value: the items I need soon...
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998828143322829329, guid: 4f458cf3bb3d113479645b6727c88287, type: 3}
+      propertyPath: interactString.Array.data[3]
+      value: once I loop around again...
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998828143322829329, guid: 4f458cf3bb3d113479645b6727c88287, type: 3}
+      propertyPath: interactString.Array.data[4]
+      value: loop around again...
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998828143322829329, guid: 4f458cf3bb3d113479645b6727c88287, type: 3}
+      propertyPath: interactString.Array.data[5]
+      value: flow hasn't worked,
       objectReference: {fileID: 0}
     - target: {fileID: 4846530465219444455, guid: 4f458cf3bb3d113479645b6727c88287, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13327,7 +13429,7 @@ Transform:
   m_GameObject: {fileID: 1694151763}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.587, y: -1.75, z: 0}
+  m_LocalPosition: {x: -2.587, y: -1.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13812,6 +13914,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7642245239140720937}
+  - {fileID: 853380661}
   - {fileID: 909896224}
   - {fileID: 1030334084}
   - {fileID: 144141007}
@@ -15297,7 +15400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2018344032
 Transform:
   m_ObjectHideFlags: 0
@@ -15349,7 +15452,7 @@ MonoBehaviour:
   levelMusic: {fileID: 8300000, guid: 5ffaee2c2542b8149b5c13a97a766f3d, type: 3}
   clearAudio: {fileID: 8300000, guid: 5f5d7640325416148bab2d0589a10bbf, type: 3}
   deathAudio: {fileID: 8300000, guid: ced3ae202ae0f6546ac10317883a0297, type: 3}
-  energyMeter: 50
+  energyMeter: 200
   batteryAmount: 25
   energyTimer: 1
   energyMeterText: {fileID: 827629403}
@@ -16202,11 +16305,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6651204113584598657, guid: 9e16180e0f8dbfb438d75fba7584af0e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.599
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6651204113584598657, guid: 9e16180e0f8dbfb438d75fba7584af0e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.534
+      value: -2.46
       objectReference: {fileID: 0}
     - target: {fileID: 6651204113584598657, guid: 9e16180e0f8dbfb438d75fba7584af0e, type: 3}
       propertyPath: m_LocalPosition.z
