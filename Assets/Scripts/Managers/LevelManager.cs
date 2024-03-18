@@ -49,6 +49,8 @@ public class LevelManager : MonoBehaviour
 						if (items[i].type == InteractableType.BATTERY &&
 						GBManager.Instance.batteriesCollectedlv1.Contains(items[i].objectID))
 						{
+							//add battery to current level's collection for UI purposes
+							//probably would be better to just add it in calculation but didn't do a good job managing level state
 							GameplayManager.Instance.batteriesCollected.Add(-1);
 							items[i].gameObject.SetActive(false);
 							items.RemoveAt(i);

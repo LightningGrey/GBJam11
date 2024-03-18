@@ -29,7 +29,7 @@ public class GameplayManager : MonoBehaviour
 	public int energyMeter = 50;
 	public int batteryAmount = 25;
 	public float energyTimer = 1f;
-	public TextMeshProUGUI energyMeterText;
+	public TextMeshProUGUI timerText;
 	private float speedScale = 1f;
 	
 	
@@ -64,7 +64,7 @@ public class GameplayManager : MonoBehaviour
 		energyMeter += batteryAmount * (GBManager.Instance.batteriesCollectedlv1.Count +
 			GBManager.Instance.batteriesCollectedlv2.Count);
 		
-		energyMeterText.text = energyMeter.ToString();
+		timerText.text = energyMeter.ToString();
 	}
 
 
@@ -150,9 +150,8 @@ public class GameplayManager : MonoBehaviour
 	public void ExitLevel()
 	{
 		GBManager.Instance.activeControl = false;
-
-		GBManager.Instance.ObtainParts();
-		StartCoroutine(ClearLevelTransition());
+		
+		GBManager.Instance.LoadNewScene(SceneManager.GetActiveScene(), "LevelSelect");
 		
 		// gb.Sound.StopMusic();
 		// gb.Sound.StopAllSounds();
@@ -170,7 +169,7 @@ public class GameplayManager : MonoBehaviour
 	public void DepleteEnergy(int amount = 1)
 	{
 		energyMeter = Mathf.Max(energyMeter - amount, 0);
-		energyMeterText.text = energyMeter.ToString();
+		timerText.text = energyMeter.ToString();
 		
 		//timer = 1f;
 	}

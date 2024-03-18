@@ -45,6 +45,7 @@ public class LevelSelect : MonoBehaviour
 			gb.Sound.PlayMusic(menuMusic);
 		}
 		
+		
 		levelIndex = GBManager.Instance.currentLevel;	
 		
 		UpdateLevelSelect();

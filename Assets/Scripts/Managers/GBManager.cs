@@ -73,6 +73,7 @@ public class GBManager : MonoBehaviour
 
 	public void LoadNewScene(Scene currentScene, string nextScene)
 	{
+		Time.timeScale = 1f;
 		StartCoroutine(LoadSceneCoroutine(currentScene, nextScene));
 	}
 	
@@ -81,6 +82,7 @@ public class GBManager : MonoBehaviour
 		yield return gb.Display.StartCoroutine(gb.Display.FadeToBlack(2f));
 		yield return new WaitForSeconds(1f);
 
+		gb.Sound.StopMusic();
 		SceneManager.LoadScene(nextScene);
 
 		yield return gb.Display.StartCoroutine(gb.Display.FadeFromBlack(2f));

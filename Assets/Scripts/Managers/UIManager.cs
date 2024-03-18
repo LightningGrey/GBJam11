@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using DG.Tweening;
 using GBTemplate;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class UIManager : MonoBehaviour
 	
 	
 	public GameObject arrow;
+	//public GameObject exitArrow;
 	public AudioClip selectSFX;
 	
 	public TextMeshProUGUI batteryText;
@@ -57,7 +59,7 @@ public class UIManager : MonoBehaviour
 		
 		if (paused)
 		{
-			if (options.activeSelf)
+			if (options.activeSelf || confirmClose.activeSelf)
 			{
 				if (GBManager.Instance.gb.Input.DownJustPressed && selectionIndex == 0)
 				{
@@ -74,13 +76,27 @@ public class UIManager : MonoBehaviour
 				{
 					GBManager.Instance.gb.Sound.PlaySound(selectSFX);
 					startPress = true;
-					if (selectionIndex == 1)
+					if (options.activeSelf)
 					{
-						ExitLevel();
+						if (selectionIndex == 1)
+						{
+							ExitPrompt(true);
+						}
+						else
+						{
+							CloseMenu();
+						}
 					}
-					else 
+					else
 					{
-						CloseMenu();
+						if (selectionIndex == 1)
+						{
+							ExitPrompt(false);
+						}
+						else
+						{
+							ExitToStageSelect();
+						}
 					}
 				}	
 			}		
@@ -121,18 +137,19 @@ public class UIManager : MonoBehaviour
 		GBManager.Instance.activeControl = false;
 		
 		movementTween = transform.DOLocalMoveY(0f, 2).SetUpdate(true).SetEase(Ease.Linear)
-			.OnComplete(() => arrowCoroutine = StartCoroutine(UIFlash()));
+			.OnComplete(() => arrowCoroutine = StartCoroutine(UITransition()));
 		
 		// options.SetActive(true);
 		// StartCoroutine(UIFlash());
 	}
 	
 	
-	public IEnumerator UIFlash()
+	public IEnumerator UITransition()
 	{ 
 		yield return new WaitForSecondsRealtime(0.3f);
 		
 		options.SetActive(true);
+		arrow.SetActive(true);
 		paused = true;
 		
 		if (GBManager.Instance.currentLevel == 0)
@@ -148,7 +165,13 @@ public class UIManager : MonoBehaviour
 
 		
 		GBManager.Instance.activeControl = true;
+		
+		arrowCoroutine = StartCoroutine(UIFlash());
 
+	}
+	
+	public IEnumerator UIFlash()
+	{
 		while (!startPress) // couldn't find a way to do this with input check
 		{
 			yield return new WaitForSecondsRealtime(0.3f);
@@ -161,6 +184,7 @@ public class UIManager : MonoBehaviour
 		arrow.SetActive(false);
 	}
 	
+	
 	public void CloseMenu()
 	{
 		GBManager.Instance.activeControl = false;
@@ -172,7 +196,7 @@ public class UIManager : MonoBehaviour
 		Time.timeScale = 1;
 		paused = false;
 		
-		arrow.SetActive(true);
+		arrow.SetActive(false);
 		options.SetActive(false);
 		
 		GBManager.Instance.activeControl = true;
@@ -212,10 +236,25 @@ public class UIManager : MonoBehaviour
 	}
 
 
-	public void ExitLevel()
+	public void ExitPrompt(bool entering)
 	{
-		options.SetActive(false);
-		confirmClose.SetActive(true);
+		options.SetActive(!entering);
+		confirmClose.SetActive(entering);
+		
+		startPress = false;
+		
+	}
+	
+	public void ExitToStageSelect()
+	{
+		GBManager.Instance.activeControl = false;
+
+		if (GBManager.Instance.colorize)
+		{
+			GBManager.Instance.gb.Display.UpdateColorPalette(1);
+		}
+
+		GBManager.Instance.LoadNewScene(SceneManager.GetActiveScene(), "LevelSelect");
 	}
 	
 }

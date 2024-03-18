@@ -63,10 +63,10 @@ public class MainMenu : MonoBehaviour
 			if (gb.Input.ButtonStartJustPressed)
 			{
 				gb.Sound.PlaySound(selectSFX);
-				if (selectionIndex == 0)
-				{
+				//if (selectionIndex == 0)
+				//{
 					StartGame();
-				}
+				//}
 			}
 		}
 
