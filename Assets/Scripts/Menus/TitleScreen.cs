@@ -46,6 +46,7 @@ public class TitleScreen : MonoBehaviour
 			&& coroutineQueue.Count > 0)
 		{
 			StopAllCoroutines();
+			coroutineQueue.Clear();
 			gb.Display.InterruptFade();
 			
 			coverImage.SetActive(false);

@@ -71,18 +71,18 @@ public class GBManager : MonoBehaviour
 	// }
 
 
-	public void LoadNewScene(Scene currentScene, string nextScene)
+	public void LoadNewScene(Scene currentScene, string nextScene, bool reloadMusic = false)
 	{
 		Time.timeScale = 1f;
-		StartCoroutine(LoadSceneCoroutine(currentScene, nextScene));
+		StartCoroutine(LoadSceneCoroutine(currentScene, nextScene, reloadMusic));
 	}
 	
-	public IEnumerator LoadSceneCoroutine(Scene currentScene, string nextScene)
+	public IEnumerator LoadSceneCoroutine(Scene currentScene, string nextScene, bool reloadMusic = false)
 	{
 		yield return gb.Display.StartCoroutine(gb.Display.FadeToBlack(2f));
 		yield return new WaitForSeconds(1f);
 
-		gb.Sound.StopMusic();
+		if (reloadMusic) { gb.Sound.StopMusic(); }
 		SceneManager.LoadScene(nextScene);
 
 		yield return gb.Display.StartCoroutine(gb.Display.FadeFromBlack(2f));

@@ -254,7 +254,7 @@ public class UIManager : MonoBehaviour
 			GBManager.Instance.gb.Display.UpdateColorPalette(1);
 		}
 
-		GBManager.Instance.LoadNewScene(SceneManager.GetActiveScene(), "LevelSelect");
+		GBManager.Instance.LoadNewScene(SceneManager.GetActiveScene(), "LevelSelect", true);
 	}
 	
 }
