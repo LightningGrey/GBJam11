@@ -279,6 +279,7 @@ MonoBehaviour:
   sceneList:
   - Level1
   - Level2
+  - LevelFinal
   colorize: 1
   activeControl: 1
   currentLevel: 0
