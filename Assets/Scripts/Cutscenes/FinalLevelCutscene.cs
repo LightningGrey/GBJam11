@@ -75,7 +75,7 @@ public class FinalLevelCutscene : MonoBehaviour
 	
 	void ProgressToCredits()
 	{
-		GBManager.Instance.LoadNewScene(SceneManager.GetActiveScene(), "CreditScene");
+		GBManager.Instance.LoadNewScene(SceneManager.GetActiveScene(), "CreditsScene");
 	}
 	
 }
