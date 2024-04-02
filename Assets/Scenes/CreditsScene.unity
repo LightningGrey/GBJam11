@@ -1213,13 +1213,13 @@ MonoBehaviour:
   colorize: 1
   activeControl: 0
   currentLevel: 2
-  batteriesCollectedlv1: 
+  batteriesCollectedlv1: 000000000000000000000000
   batterieslv1: 3
-  partsCollectedlv1: 00000000000000000000000000000000
+  partsCollectedlv1: 0000000000000000000000000000000000000000
   partslv1: 5
-  batteriesCollectedlv2: 
+  batteriesCollectedlv2: 000000000000000000000000
   batterieslv2: 3
-  partsCollectedlv2: 00000000000000000000000000000000
+  partsCollectedlv2: 0000000000000000000000000000000000000000
   partslv2: 5
 --- !u!4 &1560348710
 Transform:
@@ -1491,7 +1491,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2018344032
 Transform:
   m_ObjectHideFlags: 0

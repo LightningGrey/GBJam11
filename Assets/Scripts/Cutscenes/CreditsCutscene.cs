@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class CreditsCutscene : MonoBehaviour
 {
@@ -52,10 +53,24 @@ public class CreditsCutscene : MonoBehaviour
 			// better case handling is possible but we're just at the end I'm finishing this
 			if (counter == 1)
 			{
-				textboxText.text = textboxText.text.Replace("{batteryVal}", 
-				(GBManager.Instance.batteriesCollectedlv1.Count + GBManager.Instance.batteriesCollectedlv2.Count).ToString());
-				textboxText.text = textboxText.text.Replace("{partVal}", 
-				(GBManager.Instance.partsCollectedlv1.Count + GBManager.Instance.partsCollectedlv2.Count).ToString());
+				var batteryTotal = GBManager.Instance.batteriesCollectedlv1.Count + GBManager.Instance.batteriesCollectedlv2.Count;
+				var partTotal = GBManager.Instance.partsCollectedlv1.Count + GBManager.Instance.partsCollectedlv2.Count;
+				
+				textboxText.text = textboxText.text.Replace("{batteryVal}", batteryTotal.ToString());
+				textboxText.text = textboxText.text.Replace("{partVal}", partTotal.ToString());
+				
+				if (partTotal == 10 && batteryTotal == 6)
+				{
+					textboxText.text += "\nYou collected everything, well done!";
+				}
+				else if (partTotal == 10)
+				{
+					textboxText.text += "\nYou collected all parts!";
+				}
+				else if (batteryTotal == 6)
+				{
+					textboxText.text += "\nYou collected all batteries!";
+				}
 			}
 			else if (counter == 2)
 			{

@@ -15401,7 +15401,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2018344032
 Transform:
   m_ObjectHideFlags: 0
@@ -15453,7 +15453,7 @@ MonoBehaviour:
   levelMusic: {fileID: 8300000, guid: 5ffaee2c2542b8149b5c13a97a766f3d, type: 3}
   clearAudio: {fileID: 8300000, guid: 5f5d7640325416148bab2d0589a10bbf, type: 3}
   deathAudio: {fileID: 8300000, guid: ced3ae202ae0f6546ac10317883a0297, type: 3}
-  energyMeter: 200
+  energyMeter: 50
   batteryAmount: 25
   energyTimer: 1
   timerText: {fileID: 827629403}
