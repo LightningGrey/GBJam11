@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
 	public GameObject arrow;
 	private int selectionIndex = 0;
 	public Coroutine currentCoroutine;
-	public string nextScene = "MainGameplayScene";
+	//public string nextScene = "MainGameplayScene";
 	
 	
 	
@@ -24,7 +24,7 @@ public class MainMenu : MonoBehaviour
 	{
 		gb = GBConsoleController.GetInstance();
 		
-		GBManager.Instance.activeControl = false;
+		//GBManager.Instance.activeControl = false;
 		
 		//StartCoroutine(UIFlash());
 
@@ -40,22 +40,22 @@ public class MainMenu : MonoBehaviour
 	{
 		if (GBManager.Instance.activeControl)
 		{
-			// if (gb.Input.DownJustPressed && selectionIndex == 0)
-			// {
-			// 	selectionIndex++;
-			// 	arrow.transform.localPosition -= new Vector3(0f, 22f);
-			// }
-			// else if (gb.Input.UpJustPressed && selectionIndex == 1)
-			// {
-			// 	selectionIndex--;
-			// 	arrow.transform.localPosition += new Vector3(0f, 22f);
-			// }
+			if (gb.Input.DownJustPressed && selectionIndex == 0)
+			{
+				selectionIndex++;
+				arrow.transform.localPosition -= new Vector3(0f, 3f);
+			}
+			else if (gb.Input.UpJustPressed && selectionIndex == 1)
+			{
+				selectionIndex--;
+				arrow.transform.localPosition += new Vector3(0f, 3f);
+			}
 			
 			
 			//TODO: uncomment later if want options
 			// if (gb.Input.ButtonSelectPressedTime > 2f && gb.Input.DownPressedTime > 2f && !options.activeSelf)
 			// {
-				
+			
 			// 	StartCoroutine(Options());
 			// }
 			
@@ -65,7 +65,7 @@ public class MainMenu : MonoBehaviour
 				gb.Sound.PlaySound(selectSFX);
 				//if (selectionIndex == 0)
 				//{
-					StartGame();
+				//	StartGame();
 				//}
 			}
 		}

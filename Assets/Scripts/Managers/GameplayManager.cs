@@ -7,7 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 
-// TODO: maybe change this into multiple scripts cause this is bad?
+// should have changed into more separate scripts
 public class GameplayManager : MonoBehaviour
 {
 	

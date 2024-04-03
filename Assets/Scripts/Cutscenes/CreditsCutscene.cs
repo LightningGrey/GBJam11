@@ -38,7 +38,6 @@ public class CreditsCutscene : MonoBehaviour
 		}
 	}
 	
-	//TODO: extra message congratulating you for 100%
 	IEnumerator TextDisplayCoroutine()
 	{
 		

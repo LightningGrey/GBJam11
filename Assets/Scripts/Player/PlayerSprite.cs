@@ -22,7 +22,6 @@ public class PlayerSprite : MonoBehaviour
 	}
 	
 	
-	//TODO: UPDATE SPRITE
 	public void UpdateGameplaySprite(bool up, bool down, bool left, bool right)
 	{
 		if (left)

@@ -11,6 +11,7 @@ public class TitleScreen : MonoBehaviour
 	private GBConsoleController gb;
 	public AudioClip titleMusic;
 	public Coroutine currentCoroutine;
+	private bool startMenuMove = false;
 
 	
 	public Queue<IEnumerator> coroutineQueue = new Queue<IEnumerator>();
@@ -52,12 +53,16 @@ public class TitleScreen : MonoBehaviour
 			coverImage.SetActive(false);
 			jamLogo.SetActive(false);
 			credits.SetActive(false);
-			mainMenu.SetActive(true);
+			//mainMenu.SetActive(true);
 			
 			currentCoroutine = StartCoroutine(TextFlash());
 			
 			//currentCoroutine = StartCoroutine(coroutineQueue.Dequeue());
 			
+		}
+		else if (gb.Input.ButtonStartJustPressed && !startMenuMove && !mainMenu.activeSelf)
+		{
+			startMenuMove = true;
 		}
 
 	}
@@ -104,7 +109,7 @@ public class TitleScreen : MonoBehaviour
 		
 		yield return new WaitForSeconds(1f);
 		
-		mainMenu.SetActive(true);
+		//mainMenu.SetActive(true);
 
 		//titleScreenText.DOColor(Color.black, 0.3f).SetAutoKill(false).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Flash);
 		currentCoroutine = StartCoroutine(TextFlash());
@@ -124,9 +129,11 @@ public class TitleScreen : MonoBehaviour
 			titleScreenText.gameObject.SetActive(true);
 			yield return new WaitForSeconds(0.3f);	
 		} 
-		while (!gb.Input.ButtonStartJustPressed);
+		while (!startMenuMove);
 
-
+		titleScreenText.gameObject.SetActive(false);
+		mainMenu.SetActive(true);
+		startMenuMove = false;
 	}
 
 
