@@ -38,7 +38,7 @@ public class MainMenu : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (GBManager.Instance.activeControl)
+		if (GBManager.Instance.activeControl && !options.activeSelf)
 		{
 			// if (gb.Input.DownJustPressed && selectionIndex == 0)
 			// {
@@ -52,12 +52,10 @@ public class MainMenu : MonoBehaviour
 			// }
 			
 			
-			//TODO: uncomment later if want options
-			// if (gb.Input.ButtonSelectPressedTime > 2f && gb.Input.DownPressedTime > 2f && !options.activeSelf)
-			// {
-				
-			// 	StartCoroutine(Options());
-			// }
+			if (gb.Input.ButtonBPressedTime > 1f && gb.Input.LeftPressedTime > 1f && !options.activeSelf)
+			{
+				StartCoroutine(Options());
+			}
 			
 
 			if (gb.Input.ButtonStartJustPressed)
@@ -113,6 +111,12 @@ public class MainMenu : MonoBehaviour
 		
 		GBManager.Instance.activeControl = true;
 		
+		// could use callback instead of separate thread but I don't think I need to tie it back again
+		yield return new WaitUntil(() => !options.activeSelf);
+		
+		yield return GBManager.Instance.gb.Display.StartCoroutine(GBManager.Instance.gb.Display.FadeFromBlack(2f));
+		
+		GBManager.Instance.activeControl = true;
 	}
 	
 	
