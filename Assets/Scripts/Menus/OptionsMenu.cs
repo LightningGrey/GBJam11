@@ -136,6 +136,7 @@ public class OptionsMenu : MonoBehaviour
 		//DOTween.KillAll();
 		GBManager.Instance.activeControl = false;
 		
+		optionStrings[selectionIndex].SetActive(true);
 		selectionIndex = 0;
 		
 		yield return GBManager.Instance.gb.Display.StartCoroutine(GBManager.Instance.gb.Display.FadeToBlack(2f));

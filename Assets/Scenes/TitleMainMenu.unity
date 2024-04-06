@@ -2934,7 +2934,7 @@ MonoBehaviour:
   leftVolume: {fileID: 494336753}
   rightVolume: {fileID: 1738376891}
   selectionIndex: 0
-  flashTimer: 3
+  flashTimer: 0.3
 --- !u!1 &2016169795
 GameObject:
   m_ObjectHideFlags: 0
