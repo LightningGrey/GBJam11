@@ -251,7 +251,7 @@ public class UIManager : MonoBehaviour
 
 		if (GBManager.Instance.colorize)
 		{
-			GBManager.Instance.gb.Display.UpdateColorPalette(1);
+			GBManager.Instance.gb.Display.UpdateColorPalette(0);
 		}
 
 		GBManager.Instance.LoadNewScene(SceneManager.GetActiveScene(), "LevelSelect", true);

@@ -19,6 +19,7 @@ public class GBManager : MonoBehaviour
 	
 	[Header("Global Flags")]
 	public bool colorize = true;
+	public int currentPalette = 1;
 	public bool activeControl = true;
 	public int currentLevel = 0;
 	
@@ -54,9 +55,8 @@ public class GBManager : MonoBehaviour
 	void Start()
 	{
 		gb = GBConsoleController.GetInstance();
-		gb.Display.UpdateColorPalette(1);
+		gb.Display.UpdateColorPalette(0);
 		
-		gb.Sound.UpdateGlobalVolume(10.0f);
 		
 		if (loadScene != "")
 		{
@@ -79,11 +79,15 @@ public class GBManager : MonoBehaviour
 	
 	public IEnumerator LoadSceneCoroutine(Scene currentScene, string nextScene, bool reloadMusic = false)
 	{
+		SceneManager.LoadSceneAsync(nextScene);
+			
 		yield return gb.Display.StartCoroutine(gb.Display.FadeToBlack(2f));
 		yield return new WaitForSeconds(1f);
 
-		if (reloadMusic) { gb.Sound.StopMusic(); }
-		SceneManager.LoadScene(nextScene);
+		if (reloadMusic) 
+		{ 
+			gb.Sound.StopMusic(); 
+		}
 
 		yield return gb.Display.StartCoroutine(gb.Display.FadeFromBlack(2f));
 		yield return new WaitForSeconds(0.5f);
@@ -99,10 +103,10 @@ public class GBManager : MonoBehaviour
 	
 	public IEnumerator ReloadSceneCoroutine()
 	{
+		SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+		
 		yield return gb.Display.StartCoroutine(gb.Display.FadeToBlack(2f));
 		yield return new WaitForSeconds(1f);
-
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		
 		yield return gb.Display.StartCoroutine(gb.Display.FadeFromBlack(2f));
 		yield return new WaitForSeconds(0.5f);

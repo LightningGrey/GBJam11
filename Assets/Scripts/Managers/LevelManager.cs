@@ -80,7 +80,7 @@ public class LevelManager : MonoBehaviour
 		{
 			if (GBManager.Instance.colorize)
 			{
-				GBManager.Instance.gb.Display.UpdateColorPalette(4);
+				GBManager.Instance.gb.Display.UpdateColorPalette(3);
 			}
 			
 			if (items.Count > 0)
