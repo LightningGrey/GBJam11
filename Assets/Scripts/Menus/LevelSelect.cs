@@ -112,7 +112,6 @@ public class LevelSelect : MonoBehaviour
 		}
 
 
-		// fixes a minor
 		DOTween.KillAll();
 		currentImage.transform.localPosition = new Vector3(0f, -24f, 0f);
 		
