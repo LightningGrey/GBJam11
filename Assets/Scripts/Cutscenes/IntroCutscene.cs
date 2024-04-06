@@ -15,6 +15,11 @@ public class IntroCutscene : MonoBehaviour
 	[SerializeField]
 	private float duration;
 	
+	[SerializeField]
+	private AudioClip cutsceneTheme;
+	
+	
+	
 	
 	private GBConsoleController gb;
 	
@@ -26,6 +31,8 @@ public class IntroCutscene : MonoBehaviour
 	void Start()
 	{
 		gb = GBConsoleController.GetInstance();
+		gb.Sound.StopMusic();
+		gb.Sound.PlayMusicOneShot(cutsceneTheme);
 		
 		textScrollTween = transform.DOLocalMoveY(endLocation, duration).SetAutoKill(false).SetEase(Ease.Linear).OnComplete(
 			() => GBManager.Instance.LoadNewScene(SceneManager.GetActiveScene(), "LevelSelect")

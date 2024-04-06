@@ -40,11 +40,8 @@ public class LevelSelect : MonoBehaviour
 	{
 		
 		gb = GBConsoleController.GetInstance();
-		if (!gb.Sound.IsMusicPlaying())
-		{
-			gb.Sound.PlayMusic(menuMusic);
-		}
-		
+		gb.Sound.StopMusic();
+		gb.Sound.PlayMusic(menuMusic);
 		
 		levelIndex = GBManager.Instance.currentLevel;	
 		

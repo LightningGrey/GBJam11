@@ -56,7 +56,7 @@ public class GBManager : MonoBehaviour
 		gb = GBConsoleController.GetInstance();
 		gb.Display.UpdateColorPalette(1);
 		
-		gb.Sound.UpdateGlobalVolume(10.5f);
+		gb.Sound.UpdateGlobalVolume(10.0f);
 		
 		if (loadScene != "")
 		{

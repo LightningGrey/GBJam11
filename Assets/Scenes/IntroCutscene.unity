@@ -632,6 +632,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endLocation: 320
   duration: 45
+  cutsceneTheme: {fileID: 8300000, guid: 3f6ebe8d90722994b8d05da004284704, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

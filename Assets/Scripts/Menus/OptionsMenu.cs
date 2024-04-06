@@ -8,6 +8,8 @@ public class OptionsMenu : MonoBehaviour
 	private GBConsoleController gb;
 	
 	public int selectionIndex = 0;
+	public float flashTimer = 3f;
+	
 
 	// Start is called before the first frame update
 	void Start()
@@ -41,6 +43,8 @@ public class OptionsMenu : MonoBehaviour
 					break;
 			}
 		}
+		
+		//.gameObject.SetActive(false);
 
 	}
 	
@@ -48,6 +52,8 @@ public class OptionsMenu : MonoBehaviour
 	{
 		//DOTween.KillAll();
 		GBManager.Instance.activeControl = false;
+		
+		selectionIndex = 0;
 		
 		yield return GBManager.Instance.gb.Display.StartCoroutine(GBManager.Instance.gb.Display.FadeToBlack(2f));
 		

@@ -5,11 +5,14 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using GBTemplate;
 
 public class CreditsCutscene : MonoBehaviour
 {
 		
 	public List<GameObject> backgrounds;
+	public AudioClip cutsceneTheme;
+	[HideInInspector] public GBConsoleController gb;
 	
 	[Header("Text References")]
 	public TextMeshProUGUI textboxText;
@@ -20,6 +23,9 @@ public class CreditsCutscene : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		gb = GBConsoleController.GetInstance();
+		gb.Sound.StopMusic();
+		gb.Sound.PlayMusicOneShot(cutsceneTheme);
 		
 		StartCoroutine(TextDisplayCoroutine());
 	}

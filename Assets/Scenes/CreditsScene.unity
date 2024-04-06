@@ -207,6 +207,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 884071373}
   m_SourcePrefab: {fileID: 100100000, guid: 0230a887d8a1fcf4d80718d08ce691dd, type: 3}
+--- !u!20 &134728195 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2525107258370788979, guid: 0230a887d8a1fcf4d80718d08ce691dd, type: 3}
+  m_PrefabInstance: {fileID: 134728194}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &315658871
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,6 +663,8 @@ MonoBehaviour:
   backgrounds:
   - {fileID: 521009087}
   - {fileID: 979374028}
+  cutsceneTheme: {fileID: 8300000, guid: 3f6ebe8d90722994b8d05da004284704, type: 3}
+  gb: {fileID: 0}
   textboxText: {fileID: 937437210}
   textLines:
   - You have escaped out of the depths of space. With your ship fixed, you make the
@@ -1369,8 +1376,8 @@ Canvas:
   m_GameObject: {fileID: 1837228736}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 134728195}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1491,7 +1498,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2018344032
 Transform:
   m_ObjectHideFlags: 0
